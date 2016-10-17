@@ -2,7 +2,7 @@
   (:require [clj-time.core :as t])
   (:gen-class))
 
-(defn- spot [grade role] {:role role :grade grade})
+(defn- spot [grade role] {:role (name role) :grade (name grade)})
 
 (def project-start-delay-distribution-weeks [1 2 3 4])
 

@@ -16,10 +16,11 @@
 
 (defn jigsaw []
   (let [project (p/demand-generate)
-        date-stream (c/generate-date-stream (project :start-date) (project :end-date))]
+        date-stream (c/generate-date-stream (project :start-date) (project :end-date))
+        roles (project :spots)]
     ; (spit "target/jigsaw.html" (format-upcoming-project project))]
 
-  	(layout/render "jigsaw.html" {:date-stream date-stream})))
+  	(layout/render "jigsaw.html" {:date-stream date-stream :roles roles})))
 
 (defroutes home-routes
   (GET "/" [] (home-page))
