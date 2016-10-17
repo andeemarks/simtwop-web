@@ -35,12 +35,3 @@
 				number-of-weeks (+ 1 (t/in-weeks (t/interval start-date end-date)))
 				first-days-of-each-week (take number-of-weeks (p/periodic-seq first-day-of-first-week (t/weeks 1)))]
 		(map extract-key-date-elements first-days-of-each-week)))
-
-(defn -main
-  "Run some sample fns"
-  [& args]
-  (let [project (portfolio/demand-generate)
-  		staff (ps/ps-populate 10)]
-  		(spit "target/jigsaw.html" (format-upcoming-project project))
-  		; (aprint staff)
-  		(aprint project)))
