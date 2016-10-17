@@ -20,7 +20,7 @@
         roles (project :spots)]
     ; (spit "target/jigsaw.html" (format-upcoming-project project))]
 
-  	(layout/render "jigsaw.html" {:date-stream date-stream :roles roles})))
+  	(layout/render "jigsaw.html" {:date-stream date-stream :roles roles :duration (range 0 (project :duration-weeks))})))
 
 (defroutes home-routes
   (GET "/" [] (home-page))

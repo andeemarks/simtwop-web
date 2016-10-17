@@ -13,31 +13,32 @@
           <span class="staffing-plans-view-results">
             <section class="staffing-plans-project columns large-12">
               <table>
-              <thead>
-                <tr><th/>
-                  {% for week in date-stream %}
-                    <th class="staffing-plans-header-month">
-                      {{week.month}}
-                    </th>
-                  {% endfor %}
-                </tr>
-                <tr><th/>
-                  {% for week in date-stream %}
-                    <th>
-                      {{week.start-of-week}}
-                    </th>
-                  {% endfor %}
-                </tr>
-              </thead>
-              <tbody>
-              {% for role in roles %}
-                <tr class="staffing-plans-role">
-                  <td class="staffing-plans-role-cell open_role_background_{{role.role}}"><div class="role-description"><em>{{role.role}}</em><br /></div></td>
-                </tr>
-              {% endfor %}
+                <thead>
+                  <tr><th/>
+                    {% for week in date-stream %}
+                      <th class="staffing-plans-header-month">
+                        {{week.month}}
+                      </th>
+                    {% endfor %}
+                  </tr>
+                  <tr><th/>
+                    {% for week in date-stream %}
+                      <th>
+                        {{week.start-of-week}}
+                      </th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                {% for role in roles %}
+                  <tr class="staffing-plans-role">
+                    <td class="staffing-plans-role-cell open_role_background_{{role.role}}"><div class="role-description"><em>{{role.role}}</em><br /></div></td>
+                    {% for week in duration %}
+                      <td class="open_role_background_{{role.role}}"> </td>
+                    {% endfor %}
 
-<!--               <tr class="staffing-plans-role"><td class="staffing-plans-role-cell open_role_background_dev"><div class="role-description"><em>dev</em><br /></div></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td></tr><tr class="staffing-plans-role"><td class="staffing-plans-role-cell open_role_background_dev"><div class="role-description"><em>dev</em><br /></div></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td></tr><tr class="staffing-plans-role"><td class="staffing-plans-role-cell open_role_background_dev"><div class="role-description"><em>dev</em><br /></div></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td></tr><tr class="staffing-plans-role"><td class="staffing-plans-role-cell open_role_background_dev"><div class="role-description"><em>dev</em><br /></div></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td><td class="open_role_background_dev"></td></tr>
- -->              
+                  </tr>
+                {% endfor %}
                 </tbody>
               </table>
             </section>
