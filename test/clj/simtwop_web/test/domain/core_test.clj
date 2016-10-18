@@ -20,7 +20,7 @@
       (is (= "28" ((second date-stream) :start-of-week)) "Incorrect start day for second week")
       (is (= "Mar" ((second date-stream) :month)) "Incorrect month for start date")))
 
-  (testing "produces a pair of bounded weeks for a engagement over a month"
+  (testing "produces a set of bounded weeks for a engagement over a month"
     (let [date-stream (generate-date-stream (t/date-time 2016 3 23) (t/date-time 2016 4 23))]
       (is (= 5 (count date-stream)))
       (is (= "21" ((first date-stream) :start-of-week)) "Incorrect start day for first week")

@@ -15,16 +15,16 @@
               <table>
                 <thead>
                   <tr><th/>
-                    {% for week in date-stream %}
+                    {% for dates in date-stream %}
                       <th class="staffing-plans-header-month">
-                        {{week.month}}
+                        {{dates.month}}
                       </th>
                     {% endfor %}
                   </tr>
                   <tr><th/>
-                    {% for week in date-stream %}
+                    {% for dates in date-stream %}
                       <th>
-                        {{week.start-of-week}}
+                        {{dates.start-of-week}}
                       </th>
                     {% endfor %}
                   </tr>

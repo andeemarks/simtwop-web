@@ -1,4 +1,5 @@
 (ns simtwop-web.routes.home
+  (:require [clj-time.core :as t])
   (:require [simtwop-web.layout :as layout]
             [compojure.core :refer [defroutes GET]]
             [simtwop-web.domain.core :as c]
@@ -11,14 +12,10 @@
   (layout/render
     "home.html" {:docs (-> "docs/docs.md" io/resource slurp)}))
 
-(defn about-page []
-  (layout/render "about.html"))
-
 (defn jigsaw []
   (let [project (p/demand-generate)
-        date-stream (c/generate-date-stream (project :start-date) (project :end-date))
+        date-stream (c/generate-date-stream (t/now) (project :end-date))
         roles (project :spots)]
-    ; (spit "target/jigsaw.html" (format-upcoming-project project))]
 
   	(layout/render "jigsaw.html" {:date-stream date-stream :roles roles :duration (range 0 (project :duration-weeks))})))
 
