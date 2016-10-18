@@ -17,6 +17,27 @@ body {
 .navbar-nav .nav-link + .nav-link {
   margin-left: 0;
 }
+
+.open_role_background_dev {
+  background-color: #0cb0c6 !important
+}
+
+.open_role_background_ba {
+  background-color: #b53267 !important
+}
+
+.open_role_background_qa {
+  background-color: #496b3e !important
+}
+
+.open_role_background_ux {
+  background-color: #743d74 !important
+}
+
+.open_role_background_pm {
+  background-color: #2b70b5 !important
+}
+
 @media (min-width: 34em) {
   .navbar-brand {
     float: left;

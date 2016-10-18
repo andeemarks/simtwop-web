@@ -6,48 +6,36 @@
     <p><a class="btn btn-primary btn-lg" href="http://luminusweb.net">Learn more &raquo;</a></p>
   </div>
  -->
-  <div class="row">
-    <div class="animated fadeIn">
-      <div class="staffing-plans">
-        <div class="staffing-plans-content">
-          <span class="staffing-plans-view-results">
-            <section class="staffing-plans-project columns large-12">
-              <table>
-                <thead>
-                  <tr><th/>
-                    {% for dates in date-stream %}
-                      <th class="staffing-plans-header-month">
-                        {{dates.month}}
-                      </th>
-                    {% endfor %}
-                  </tr>
-                  <tr><th/>
-                    {% for dates in date-stream %}
-                      <th>
-                        {{dates.start-of-week}}
-                      </th>
-                    {% endfor %}
-                  </tr>
-                </thead>
-                <tbody>
-                {% for role in roles %}
-                  <tr class="staffing-plans-role">
-                    <td class="staffing-plans-role-cell open_role_background_{{role.role}}"><div class="role-description"><em>{{role.role}}</em><br /></div></td>
-                    {% for week in lead-time %}
-                      <td class="no_open_role"> </td>
-                    {% endfor %}
-                    {% for week in duration %}
-                      <td class="open_role_background_{{role.role}}"> </td>
-                    {% endfor %}
+<table>
+  <thead>
+    <tr><th/>
+      {% for dates in date-stream %}
+        <th>
+          {{dates.month}}
+        </th>
+      {% endfor %}
+    </tr>
+    <tr><th/>
+      {% for dates in date-stream %}
+        <th>
+          {{dates.start-of-week}}
+        </th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+  {% for role in roles %}
+    <tr>
+      <td class="open_role_background_{{role.role}}"><div><em>{{role.role}}</em><br /></div></td>
+      {% for week in lead-time %}
+        <td class="no_open_role"> </td>
+      {% endfor %}
+      {% for week in duration %}
+        <td class="open_role_background_{{role.role}}"> </td>
+      {% endfor %}
 
-                  </tr>
-                {% endfor %}
-                </tbody>
-              </table>
-            </section>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
