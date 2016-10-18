@@ -18,6 +18,19 @@ body {
   margin-left: 0;
 }
 
+.staffing_plans_role_cell {
+  color: #ffffff;
+  width: 6%;
+  padding: 4px;
+  position: relative;
+  border-right: 4px solid #fff;
+}
+
+.staffing_plans_role {
+  border-spacing: 0 8px;
+  border-collapse: separate;
+}
+
 .open_role_background_dev {
   background-color: #0cb0c6 !important
 }

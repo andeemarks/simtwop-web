@@ -1,11 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-<!--   <div class="jumbotron">
-    <h1>Welcome to simtwop-web</h1>
-    <p>Time to start building your site!</p>
-    <p><a class="btn btn-primary btn-lg" href="http://luminusweb.net">Learn more &raquo;</a></p>
-  </div>
- -->
 <table>
   <thead>
     <tr><th/>
@@ -25,13 +19,13 @@
   </thead>
   <tbody>
   {% for role in roles %}
-    <tr>
-      <td class="open_role_background_{{role.role}}"><div><em>{{role.role}}</em><br /></div></td>
+    <tr class="staffing_plans_role">
+      <td class="staffing_plans_role_cell open_role_background_{{role.role}}"><div><em>{{role.role}}</em><br /></div></td>
       {% for week in lead-time %}
         <td class="no_open_role"> </td>
       {% endfor %}
       {% for week in duration %}
-        <td class="open_role_background_{{role.role}}"> </td>
+        <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
       {% endfor %}
 
     </tr>
