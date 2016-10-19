@@ -38,6 +38,10 @@ table {
   position: relative;
 }
 
+.staffing_plans_project td {
+  text-align: center;
+}
+
 .staffing_plans_role {
   border-spacing: 0 8px;
   border-collapse: separate;
