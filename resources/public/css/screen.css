@@ -51,6 +51,13 @@ body {
   background-color: #2b70b5 !important
 }
 
+.no_open_role {
+  width: 6%;
+  padding: 4px;
+  border-right: 4px solid #fff;
+  background: rgba(154, 160, 165, 0.31)
+}
+
 @media (min-width: 34em) {
   .navbar-brand {
     float: left;
