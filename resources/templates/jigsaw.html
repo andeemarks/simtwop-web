@@ -1,35 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-<table>
-  <thead>
-    <tr><th/>
-      {% for dates in date-stream %}
-        <th>
-          {{dates.month}}
-        </th>
-      {% endfor %}
-    </tr>
-    <tr><th/>
-      {% for dates in date-stream %}
-        <th>
-          {{dates.start-of-week}}
-        </th>
-      {% endfor %}
-    </tr>
-  </thead>
-  <tbody>
-  {% for role in roles %}
-    <tr class="staffing_plans_role">
-      <td class="staffing_plans_role_cell open_role_background_{{role.role}}"><div class="probability_label_default probability_label_{{role.role}}">100%</div><div><em>{{role.role}}</em><br />{{role.grade}}</div></td>
-      {% for week in lead-time %}
-        <td class="no_open_role"> </td>
-      {% endfor %}
-      {% for week in duration %}
-        <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
-      {% endfor %}
+<div class="staffing_plans_project">
+  <table>
+    <thead>
+      <tr><th/>
+        {% for dates in date-stream %}
+          <th>
+            {{dates.month}}
+          </th>
+        {% endfor %}
+      </tr>
+      <tr><th/>
+        {% for dates in date-stream %}
+          <th>
+            {{dates.start-of-week}}
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for role in roles %}
+      <tr class="staffing_plans_role">
+        <td class="staffing_plans_role_cell open_role_background_{{role.role}}"><div class="probability_label_default probability_label_{{role.role}}">100%</div><div><em>{{role.role}}</em><br />{{role.grade}}</div></td>
+        {% for week in lead-time %}
+          <td class="no_open_role"> </td>
+        {% endfor %}
+        {% for week in duration %}
+          <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
+        {% endfor %}
 
-    </tr>
-  {% endfor %}
-  </tbody>
-</table>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

@@ -28,6 +28,14 @@ body {
 
 table {
   width: 100%;
+  border-spacing: 0 8px;
+}
+
+.staffing_plans_project {
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px dotted #ddd;
+  position: relative;
 }
 
 .staffing_plans_role {
