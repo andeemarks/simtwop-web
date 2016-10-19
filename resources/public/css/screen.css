@@ -55,6 +55,19 @@ table {
   background-color: #2b70b5 !important
 }
 
+.probability_label_default {
+  border: 1px;
+  border-color: #d4d4d4;
+  border-style: solid;
+  background-color: #a1a1a1;
+  position: absolute;
+  left: -7px;
+  top: 0;
+  font-size: 12px;
+  font-family: opensans;
+  padding: 0 2px
+}
+
 .no_open_role {
   width: 6%;
   padding: 4px;
