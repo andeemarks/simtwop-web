@@ -55,6 +55,31 @@ table {
   background-color: #2b70b5 !important
 }
 
+.probability_label_default.probability_label_ba {
+  border-color: #ce4c81;
+  background-color: #8d2750
+}
+
+.probability_label_default.probability_label_dev {
+  border-color: #14d7f1;
+  background-color: #098596
+}
+
+.probability_label_default.probability_label_ux {
+  border-color: #954f95;
+  background-color: #532b53
+}
+
+.probability_label_default.probability_label_qa {
+  border-color: #5f8c50;
+  background-color: #334b2b
+}
+
+.probability_label_default.probability_label_pm {
+  border-color: #418ad2;
+  background-color: #21578c
+}
+
 .probability_label_default {
   border: 1px;
   border-color: #d4d4d4;
