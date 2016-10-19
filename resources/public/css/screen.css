@@ -35,6 +35,14 @@ table {
   border-collapse: separate;
 }
 
+.staffing_plans_role_cell {
+  /*width: 6%;*/
+}
+
+.role_description {
+  height: 36px;
+}
+
 .open_role_background_dev {
   background-color: #0cb0c6 !important
 }
