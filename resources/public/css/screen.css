@@ -26,6 +26,10 @@ body {
   border-right: 4px solid #fff;
 }
 
+table {
+  width: 100%;
+}
+
 .staffing_plans_role {
   border-spacing: 0 8px;
   border-collapse: separate;
