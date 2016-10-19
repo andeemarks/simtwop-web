@@ -26,6 +26,11 @@ body {
   border-right: 4px solid #fff;
 }
 
+em {
+  font-weight: bold;
+  font-style: normal;
+}
+
 table {
   width: 100%;
   border-spacing: 0 8px;
@@ -36,6 +41,7 @@ table {
   padding-bottom: 10px;
   border-bottom: 2px dotted #ddd;
   position: relative;
+  font-size: 12px;
 }
 
 .staffing_plans_project td {
