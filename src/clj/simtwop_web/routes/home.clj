@@ -21,6 +21,5 @@
 
 (defroutes home-routes
   (GET "/" [] (home-page))
-  (GET "/jigsaw" [] (jigsaw))
-  (GET "/about" [] (about-page)))
+  (GET "/jigsaw" [] (jigsaw)))
 
