@@ -18,6 +18,10 @@ body {
   margin-left: 0;
 }
 
+.staffing_plans_header_month {
+  background-color: #ededed;
+}
+
 .staffing_plans_role_cell {
   color: #ffffff;
   width: 6%;
@@ -47,6 +51,7 @@ em {
 table {
   width: 100%;
   border-spacing: 0 8px;
+  border-collapse: separate;
 }
 
 .staffing_plans_project {
