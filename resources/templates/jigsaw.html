@@ -9,16 +9,12 @@
     <thead>
       <tr><th/>
         {% for dates in date-stream %}
-          <th class="staffing_plans_header_month">
-            {{dates.month}}
-          </th>
+          <th class="staffing_plans_header_month"> {{dates.month}} </th>
         {% endfor %}
       </tr>
       <tr><th/>
         {% for dates in date-stream %}
-          <th>
-            {{dates.start-of-week}}
-          </th>
+          <th> {{dates.start-of-week}} </th>
         {% endfor %}
       </tr>
     </thead>
