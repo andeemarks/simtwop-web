@@ -4,6 +4,7 @@
             [compojure.core :refer [defroutes GET]]
             [simtwop-web.domain.core :as c]
             [simtwop-web.domain.portfolio :as p]
+            [simtwop-web.domain.people :as ps]
             [hiccup.core :as h]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
@@ -15,12 +16,16 @@
 (defn jigsaw []
   (let [project (p/demand-generate)
         date-stream (c/generate-date-stream (t/now) (project :end-date))
+        people (ps/ps-populate 100)
         roles (project :spots)]
 
   	(layout/render "jigsaw.html" {
       :date-stream date-stream 
       :lead-time (range (project :delay-weeks)) 
       :project project 
+      :people people
+      :roles ["BA" "Dev" "PM" "QA" "Specialist" "UX"]
+      :grades ["Grad" "Con" "Senior" "Lead" "Principal"]
       :duration (range (project :duration-weeks))})))
 
 (defroutes home-routes

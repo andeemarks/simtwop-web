@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="counter"></div>
+<table>
+  <thead>
+  <tr>
+    {% for grade in grades %}
+      <th> {{grade}} </th>
+    {% endfor %}
+  </tr>
+</thead>
+</table>
 <div class="staffing_plans_project">
   <div class="staffing_plans_project_header">
     <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
