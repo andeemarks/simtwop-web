@@ -50,8 +50,8 @@ var clock = $('.counter').FlipClock(10, {
   setTimeout(function() {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
-        clock.stop();
-        clearInterval(interval);
+        clock.reset();
+        // clearInterval(interval);
       }     
       clock.decrement();
     }, 1000);
