@@ -17,7 +17,7 @@
         date-stream (c/generate-date-stream (t/now) (project :end-date))
         roles (project :spots)]
 
-  	(layout/render "jigsaw.html" {:date-stream date-stream :lead-time (range 0 (project :delay-weeks)) :name (project :type) :roles roles :duration (range 0 (project :duration-weeks))})))
+  	(layout/render "jigsaw.html" {:date-stream date-stream :lead-time (range 0 (project :delay-weeks)) :project project :duration (range 0 (project :duration-weeks))})))
 
 (defroutes home-routes
   (GET "/" [] (home-page))

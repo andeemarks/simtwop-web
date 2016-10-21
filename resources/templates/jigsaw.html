@@ -3,7 +3,7 @@
 <div class="counter"></div>
 <div class="staffing_plans_project">
   <div class="staffing_plans_project_header">
-    <h3>{{name}}</h3>
+    <h3>{{project.type}}</h3>
   </div>
   <table>
     <thead>
@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-    {% for role in roles %}
+    {% for role in project.spots %}
       <tr class="staffing_plans_role">
         <td class="staffing_plans_role_cell open_role_background_{{role.role}}">
           <!-- <div class="probability_label_default probability_label_{{role.role}}">100%</div> -->
