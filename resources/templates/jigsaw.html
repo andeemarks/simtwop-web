@@ -47,12 +47,17 @@
 {% block page-scripts %}
 
 <script type="text/javascript">
-var clock = $('.counter').FlipClock(100, {
+var clock = $('.counter').FlipClock(10, {
     clockFace: 'Counter'
   });
 
   setTimeout(function() {
-    setInterval(function() {
+    var interval = setInterval(function() {
+      if(clock.getTime().time <= 0) {
+        clock.stop();
+        alert("Alive!");
+        clearInterval(interval);
+      }     
       clock.decrement();
     }, 1000);
   });
