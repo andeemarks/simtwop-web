@@ -48,9 +48,15 @@ em {
   font-style: normal;
 }
 
-table {
+table.project_table {
   width: 100%;
   border-spacing: 0 8px;
+  border-collapse: separate;
+}
+
+table.staffing_table {
+  width: 50%;
+  border-spacing: 0 4px;
   border-collapse: separate;
 }
 
@@ -64,6 +70,10 @@ table {
 
 .staffing_plans_project td {
   text-align: center;
+}
+
+.staff_table_grade_header {
+  max-width: 18%;
 }
 
 .staffing_plans_role {

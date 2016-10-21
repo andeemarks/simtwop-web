@@ -6,12 +6,12 @@
   <div class="staffing_plans_project_header">
     <h3>Available staff</h3>
   </div>
-  <table>
+  <table class="staffing_table">
     <thead>
       <tr>
         <th></th>
         {% for grade in grades %}
-          <th> {{grade}} </th>
+          <th class="staff_table_grade_header"> {{grade}} </th>
         {% endfor %}
       </tr>
     </thead>
@@ -19,6 +19,9 @@
         {% for role in roles %}
           <tr class="staffing_plans_role">
             <td class="staffing_plans_role_cell open_role_background_{{role|lower}}">{{role}}</td>
+            {% for grade in grades %}
+              <td class="staffing_plans_role_cell open_role_background_{{role|lower}}"> 0 </td>
+            {% endfor %}
           </tr>
         {% endfor %}
     </tbody>
@@ -29,7 +32,7 @@
   <div class="staffing_plans_project_header">
     <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
   </div>
-  <table>
+  <table class="project_table">
     <thead>
       <tr><th/>
         {% for dates in date-stream %}
