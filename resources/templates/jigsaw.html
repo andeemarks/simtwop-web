@@ -51,7 +51,6 @@ var clock = $('.counter').FlipClock(10, {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
         clock.stop();
-        alert("Alive!");
         clearInterval(interval);
       }     
       clock.decrement();
