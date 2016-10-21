@@ -1,15 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="counter"></div>
-<table>
-  <thead>
-  <tr>
-    {% for grade in grades %}
-      <th> {{grade}} </th>
-    {% endfor %}
-  </tr>
-</thead>
-</table>
+
+<div class="staffing_plans_project">
+  <div class="staffing_plans_project_header">
+    <h3>Available staff</h3>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        {% for grade in grades %}
+          <th> {{grade}} </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for role in roles %}
+          <tr class="staffing_plans_role">
+            <td class="staffing_plans_role_cell open_role_background_{{role|lower}}">{{role}}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+</div>
+
 <div class="staffing_plans_project">
   <div class="staffing_plans_project_header">
     <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
