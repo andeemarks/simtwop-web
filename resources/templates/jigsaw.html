@@ -2,31 +2,14 @@
 {% block content %}
 <div class="counter"></div>
 
+
 <div class="staffing_plans_project">
   <div class="staffing_plans_project_header">
     <h3>Available staff</h3>
   </div>
 
-  <table class="staffing_table">
-    <thead>
-      <tr>
-        <th></th>
-        {% for grade in grades %}
-          <th class="staff_table_grade_header"> {{grade}} </th>
-        {% endfor %}
-      </tr>
-    </thead>
-    <tbody>
-        {% for role in roles %}
-          <tr class="staffing_plans_role">
-            <td class="staffing_plans_role_cell open_role_background_{{role|lower}}">{{role}}</td>
-            {% for grade in grades %}
-              <td class="staffing_plans_role_cell open_role_background_{{role|lower}}"> 0 </td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-    </tbody>
-  </table>
+  {% safe %} {{people-table}} {% endsafe %}
+
 </div>
 
 <div class="staffing_plans_project">
