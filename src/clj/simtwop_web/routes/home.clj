@@ -57,14 +57,49 @@
           (for [grade '["Grad" "Con" "Senior" "Lead" "Principal"]]
             [:th {:class "staff_table_grade_header"} grade])]]
       [:tbody
-        (for [role '["ba" "dev" "pm" "qa" "specialist" "ux"]]
-          [:tr {:class "staffing_plans_role"}
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} role]
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} (people '(:dev :grad))]
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} (people '(:dev :con))]
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} (people '(:dev :senior))]
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} (people '(:dev :lead))]
-            [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} (people '(:dev :principal))]])]]))
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} "ba"]
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} (people '(:ba :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} (people '(:ba :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} (people '(:ba :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} (people '(:ba :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ba"} (people '(:ba :principal))]]
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} "dev"]
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} (people '(:dev :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} (people '(:dev :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} (people '(:dev :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} (people '(:dev :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_dev"} (people '(:dev :principal))]]
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} "pm"]
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} (people '(:pm :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} (people '(:pm :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} (people '(:pm :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} (people '(:pm :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_pm"} (people '(:pm :principal))]]
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} "qa"]
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} (people '(:qa :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} (people '(:qa :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} (people '(:qa :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} (people '(:qa :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_qa"} (people '(:qa :principal))]]
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} "specialist"]
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} (people '(:specialist :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} (people '(:specialist :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} (people '(:specialist :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} (people '(:specialist :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} (people '(:specialist :principal))]]
+        [:tr {:class "staffing_plans_role"}
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} "ux"]
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} (people '(:ux :grad))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} (people '(:ux :con))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} (people '(:ux :senior))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} (people '(:ux :lead))]
+          [:td {:class "staffing_plans_role_cell open_role_background_ux"} (people '(:ux :principal))]]
+          ]]))
 
 (defn jigsaw []
   (let [project (p/demand-generate)
