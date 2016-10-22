@@ -74,6 +74,7 @@ table.staffing_table {
 
 .staff_table_grade_header {
   max-width: 18%;
+  text-align: center;
 }
 
 .staffing_plans_role {

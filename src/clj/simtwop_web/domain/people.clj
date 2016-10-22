@@ -9,3 +9,6 @@
 
 (defn ps-populate [ps-size]
 	(repeatedly ps-size #(build-ps)))
+
+(defn ps-frequencies [ps-population]
+	(frequencies (map vals ps-population)))

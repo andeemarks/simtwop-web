@@ -1,5 +1,6 @@
 (ns simtwop-web.routes.home
   (:require [clj-time.core :as t])
+  (:require [aprint.core :refer :all])
   (:require [simtwop-web.layout :as layout]
             [compojure.core :refer [defroutes GET]]
             [simtwop-web.domain.core :as c]
@@ -16,7 +17,8 @@
 (defn jigsaw []
   (let [project (p/demand-generate)
         date-stream (c/generate-date-stream (t/now) (project :end-date))
-        people (ps/ps-populate 100)
+        people (ps/ps-populate 10)
+        _ (aprint people)
         roles (project :spots)]
 
   	(layout/render "jigsaw.html" {
