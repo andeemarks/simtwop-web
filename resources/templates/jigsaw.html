@@ -16,7 +16,7 @@
         {% safe %} {{people-table}} {% endsafe %}
 
       </div>
-      <div class="staffing_plans_project disabled">
+      <div class="staffing_plans_project">
         <div class="staffing_plans_project_header">
           <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
         </div>
@@ -69,6 +69,7 @@ var clock = $('.counter').FlipClock(10, {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
         clock.reset();
+        $('.project_table').addClass('disabled')
         // clearInterval(interval);
       }     
       clock.decrement();
