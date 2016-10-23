@@ -9,44 +9,6 @@
             [hiccup.core :as h]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
-
-(defn home-page []
-  (layout/render
-    "home.html" {:docs (-> "docs/docs.md" io/resource slurp)}))
-
-; <table class="staffing_table">
-;     <thead>
-;       <tr>
-;         <th></th>
-        
-;           <th class="staff_table_grade_header"> Grad </th>
-        
-;           <th class="staff_table_grade_header"> Con </th>
-        
-;           <th class="staff_table_grade_header"> Senior </th>
-        
-;           <th class="staff_table_grade_header"> Lead </th>
-        
-;           <th class="staff_table_grade_header"> Principal </th>
-        
-;       </tr>
-;     </thead>
-;     <tbody>
-        
-;           <tr class="staffing_plans_role">
-;             <td class="staffing_plans_role_cell open_role_background_ba">BA</td>
-            
-;               <td class="staffing_plans_role_cell open_role_background_ba">  </td>
-            
-;               <td class="staffing_plans_role_cell open_role_background_ba">  </td>
-            
-;               <td class="staffing_plans_role_cell open_role_background_ba">  </td>
-            
-;               <td class="staffing_plans_role_cell open_role_background_ba">  </td>
-            
-;               <td class="staffing_plans_role_cell open_role_background_ba">  </td>
-            
-;           </tr>
   
 (defn- format-people-table [people]
   (h/html
@@ -121,6 +83,5 @@
       :duration (range (project :duration-weeks))})))
 
 (defroutes home-routes
-  (GET "/" [] (home-page))
-  (GET "/jigsaw" [] (jigsaw)))
+  (GET "/" [] (jigsaw)))
 
