@@ -1,21 +1,7 @@
 html,
 body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100%;
-}
-.navbar {
-  margin-bottom: 10px;
-}
-.navbar-brand {
-  float: none;
-}
-.navbar-nav .nav-item {
-  float: none;
-}
-.navbar-divider,
-.navbar-nav .nav-item+.nav-item,
-.navbar-nav .nav-link + .nav-link {
-  margin-left: 0;
+  height: 100%;
 }
 
 .staffing_plans_header_month {
@@ -45,7 +31,6 @@ h3 {
 .staffing_plans_project_header {
   margin: 0 4px 2px;
   padding-bottom: 7px;
-  border-bottom: 2px solid #999;
 }
 
 em {
@@ -68,14 +53,20 @@ table.staffing_table {
 .disabled {
   z-index: 1000;
   background-color: lightgrey;
-  opacity: 0.6;
+  opacity: 0.1;
   pointer-events: none;
+}
+
+.available_staff_table {
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  position: relative;
+  font-size: 12px;
 }
 
 .staffing_plans_project {
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 2px dotted #ddd;
   position: relative;
   font-size: 12px;
 }

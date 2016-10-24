@@ -2,13 +2,10 @@
 {% block content %}
 
 <div class="container-fluid">
+  <h1 class="page-header">Staffing Simulator</h1>
   <div class="row">
     <div class="col-sm-3">
-      <h1 class="page-header">Staffing Simulator</h1>
-      <div class="counter"></div>
-    </div>
-    <div class="col-sm-9">
-      <div class="staffing_plans_project">
+      <div class="available_staff_table">
         <div class="staffing_plans_project_header">
           <h3>Available staff</h3>
         </div>
@@ -16,18 +13,21 @@
         {% safe %} {{people-table}} {% endsafe %}
 
       </div>
+      <div class="counter"></div>
+    </div>
+    <div class="col-sm-9">
       <div class="staffing_plans_project">
         <div class="staffing_plans_project_header">
           <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
         </div>
         <table class="project_table">
           <thead>
-            <tr><th/><th/>
+            <tr><th/>
               {% for dates in date-stream %}
                 <th class="staffing_plans_header_month"> {{dates.month}} </th>
               {% endfor %}
             </tr>
-            <tr><th/><th/>
+            <tr><th/>
               {% for dates in date-stream %}
                 <th> {{dates.start-of-week}} </th>
               {% endfor %}
@@ -75,7 +75,7 @@ var clock = $('.counter').FlipClock(10, {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
         clock.reset();
-        $('.project_table').addClass('disabled')
+        $('.staffing_plans_project').addClass('disabled')
         $(".project_table > tbody > tr").removeClass("staffing_plans_selected_row");
         // clearInterval(interval);
       }     
