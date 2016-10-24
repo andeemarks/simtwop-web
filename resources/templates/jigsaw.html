@@ -63,7 +63,7 @@
 <script type="text/javascript">
 
 $('.project_table > tbody > tr').click(function() {
-    alert("Row clickec");
+    $(this).addClass("staffing_plans_selected_row");
 });
 
 var clock = $('.counter').FlipClock(10, {

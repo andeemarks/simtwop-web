@@ -22,10 +22,8 @@ body {
   background-color: #ededed;
 }
 
-.staffing_plans_role_selector {
-  width: 20px;
-  max-width: 20px;
-  position: relative;
+.staffing_plans_selected_row {
+  filter: brightness(85%);
 }
 
 .staffing_plans_role_cell {
