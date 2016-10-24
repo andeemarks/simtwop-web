@@ -8,9 +8,12 @@ body {
   background-color: #ededed;
 }
 
+.project_role_selected_row {
+  filter: brightness(150%);
+}
+
 .staffing_plans_selected_row {
   filter: brightness(150%);
-  border-bottom: 2px solid #999;
 }
 
 .staffing_plans_role_cell {
