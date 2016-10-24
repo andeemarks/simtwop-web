@@ -67,8 +67,8 @@ $('.project_table > tbody > tr').click(function() {
     $(this).addClass("project_role_selected_row");
 });
 
-$('.staffing_table > tbody > tr > td').hover(function() {
-    $(".staffing_table > tbody > tr > td").removeClass("staffing_plans_selected_row");
+$('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').hover(function() {
+    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_row");
     $(this).addClass("staffing_plans_selected_row");
 });
 
