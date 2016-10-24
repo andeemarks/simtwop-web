@@ -63,6 +63,7 @@
 <script type="text/javascript">
 
 $('.project_table > tbody > tr').click(function() {
+    $(".project_table > tbody > tr").removeClass("staffing_plans_selected_row");
     $(this).addClass("staffing_plans_selected_row");
 });
 
