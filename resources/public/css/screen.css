@@ -22,6 +22,12 @@ body {
   background-color: #ededed;
 }
 
+.staffing_plans_role_selector {
+  width: 20px;
+  max-width: 20px;
+  position: relative;
+}
+
 .staffing_plans_role_cell {
   color: #ffffff;
   width: 6%;
@@ -61,10 +67,10 @@ table.staffing_table {
 }
 
 .disabled {
-    z-index: 1000;
-    background-color: lightgrey;
-    opacity: 0.6;
-    pointer-events: none;
+  z-index: 1000;
+  background-color: lightgrey;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 .staffing_plans_project {

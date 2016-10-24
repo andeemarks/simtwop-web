@@ -22,12 +22,12 @@
         </div>
         <table class="project_table">
           <thead>
-            <tr><th/>
+            <tr class="staffing_plans_role_selector"><th/><th/>
               {% for dates in date-stream %}
                 <th class="staffing_plans_header_month"> {{dates.month}} </th>
               {% endfor %}
             </tr>
-            <tr><th/>
+            <tr class="staffing_plans_role_selector"><th/><th/>
               {% for dates in date-stream %}
                 <th> {{dates.start-of-week}} </th>
               {% endfor %}
@@ -36,6 +36,9 @@
           <tbody>
           {% for role in project.spots %}
             <tr class="staffing_plans_role">
+              <td class="staffing_plans_role_selector">
+                <input class="staffing_plans_role_cell" type="radio" name="role_row_options" id="optionsRadios1" value="option1">
+              </td> 
               <td class="staffing_plans_role_cell open_role_background_{{role.role}}">
                 <!-- <div class="probability_label_default probability_label_{{role.role}}">100%</div> -->
                 <div><em>{{role.role}}</em><br />{{role.grade}}</div>
