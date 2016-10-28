@@ -13,6 +13,9 @@
 (defn- styles-for [role]
   {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)})
 
+(defn- staffing-count-row-for [role count]
+  [:td (styles-for role) (or count 0)])
+
 (defn- format-people-table [people]
   (h/html
     [:table {:class "staffing_table"}
@@ -24,46 +27,46 @@
       [:tbody
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ba"} "ba"]
-          [:td (styles-for "ba") (or (people '(:ba :grad)) 0)]
-          [:td (styles-for "ba") (or (people '(:ba :con)) 0)]
-          [:td (styles-for "ba") (or (people '(:ba :senior)) 0)]
-          [:td (styles-for "ba") (or (people '(:ba :lead)) 0)]
-          [:td (styles-for "ba") (or (people '(:ba :principal)) 0)]]
+          (staffing-count-row-for "ba" (people '(:ba :grad)))
+          (staffing-count-row-for "ba" (people '(:ba :con)))
+          (staffing-count-row-for "ba" (people '(:ba :senior)))
+          (staffing-count-row-for "ba" (people '(:ba :lead)))
+          (staffing-count-row-for "ba" (people '(:ba :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_dev"} "dev"]
-          [:td (styles-for "dev") (or (people '(:dev :grad)) 0)]
-          [:td (styles-for "dev") (or (people '(:dev :con)) 0)]
-          [:td (styles-for "dev") (or (people '(:dev :senior)) 0)]
-          [:td (styles-for "dev") (or (people '(:dev :lead)) 0)]
-          [:td (styles-for "dev") (or (people '(:dev :principal)) 0)]]
+          (staffing-count-row-for "dev" (people '(:dev :grad)))
+          (staffing-count-row-for "dev" (people '(:dev :con)))
+          (staffing-count-row-for "dev" (people '(:dev :senior)))
+          (staffing-count-row-for "dev" (people '(:dev :lead)))
+          (staffing-count-row-for "dev" (people '(:dev :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_pm"} "pm"]
-          [:td (styles-for "pm") (or (people '(:pm :grad)) 0)]
-          [:td (styles-for "pm") (or (people '(:pm :con)) 0)]
-          [:td (styles-for "pm") (or (people '(:pm :senior)) 0)]
-          [:td (styles-for "pm") (or (people '(:pm :lead)) 0)]
-          [:td (styles-for "pm") (or (people '(:pm :principal)) 0)]]
+          (staffing-count-row-for "pm" (people '(:pm :grad)))
+          (staffing-count-row-for "pm" (people '(:pm :con)))
+          (staffing-count-row-for "pm" (people '(:pm :senior)))
+          (staffing-count-row-for "pm" (people '(:pm :lead)))
+          (staffing-count-row-for "pm" (people '(:pm :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_qa"} "qa"]
-          [:td (styles-for "qa") (or (people '(:qa :grad)) 0)]
-          [:td (styles-for "qa") (or (people '(:qa :con)) 0)]
-          [:td (styles-for "qa") (or (people '(:qa :senior)) 0)]
-          [:td (styles-for "qa") (or (people '(:qa :lead)) 0)]
-          [:td (styles-for "qa") (or (people '(:qa :principal)) 0)]]
+          (staffing-count-row-for "qa" (people '(:qa :grad)))
+          (staffing-count-row-for "qa" (people '(:qa :con)))
+          (staffing-count-row-for "qa" (people '(:qa :senior)))
+          (staffing-count-row-for "qa" (people '(:qa :lead)))
+          (staffing-count-row-for "qa" (people '(:qa :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_specialist"} "specialist"]
-          [:td (styles-for "specialist") (or (people '(:specialist :grad)) 0)]
-          [:td (styles-for "specialist") (or (people '(:specialist :con)) 0)]
-          [:td (styles-for "specialist") (or (people '(:specialist :senior)) 0)]
-          [:td (styles-for "specialist") (or (people '(:specialist :lead)) 0)]
-          [:td (styles-for "specialist") (or (people '(:specialist :principal)) 0)]]
+          (staffing-count-row-for "specialist" (people '(:specialist :grad)))
+          (staffing-count-row-for "specialist" (people '(:specialist :con)))
+          (staffing-count-row-for "specialist" (people '(:specialist :senior)))
+          (staffing-count-row-for "specialist" (people '(:specialist :lead)))
+          (staffing-count-row-for "specialist" (people '(:specialist :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ux"} "ux"]
-          [:td (styles-for "ux") (or (people '(:ux :grad)) 0)]
-          [:td (styles-for "ux") (or (people '(:ux :con)) 0)]
-          [:td (styles-for "ux") (or (people '(:ux :senior)) 0)]
-          [:td (styles-for "ux") (or (people '(:ux :lead)) 0)]
-          [:td (styles-for "ux") (or (people '(:ux :principal)) 0)]]
+          (staffing-count-row-for "ux" (people '(:ux :grad)))
+          (staffing-count-row-for "ux" (people '(:ux :con)))
+          (staffing-count-row-for "ux" (people '(:ux :senior)))
+          (staffing-count-row-for "ux" (people '(:ux :lead)))
+          (staffing-count-row-for "ux" (people '(:ux :principal)))]
           ]]))
 
 (defn jigsaw []
