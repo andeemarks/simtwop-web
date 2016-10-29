@@ -69,7 +69,9 @@
           (staffing-count-row-for "ux" (people '(:ux :principal)))]
           ]]))
 
-(defn jigsaw []
+(defn jigsaw
+  ([] (jigsaw 0))
+  ([generation]
   (let [project (p/demand-generate)
         date-stream (c/generate-date-stream (t/now) (project :end-date))
         people (ps/ps-frequencies (ps/ps-populate 100))
@@ -83,12 +85,13 @@
       :lead-time (range (project :delay-weeks)) 
       :project project 
       :people people
+      :generation generation
       :people-table people-table
       :roles ["BA" "Dev" "PM" "QA" "Specialist" "UX"]
       :grades ["Grad" "Con" "Senior" "Lead" "Principal"]
-      :duration (range (project :duration-weeks))})))
+      :duration (range (project :duration-weeks))}))))
 
 (defroutes home-routes
-  (POST "/" [] (jigsaw))
+  (POST "/:generation" [generation] (jigsaw generation))
   (GET "/" [] (jigsaw)))
 
