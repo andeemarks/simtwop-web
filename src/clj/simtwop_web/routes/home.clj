@@ -75,6 +75,7 @@
 
 (defn jigsaw [generation]
   (let [project (p/demand-generate)
+        old-projects (db/load-projects)
         date-stream (c/generate-date-stream (t/now) (project :end-date))
         people (ps/ps-frequencies (ps/ps-populate 100))
         people-table (format-people-table people)
@@ -84,7 +85,8 @@
   	(layout/render "jigsaw.html" {
       :date-stream date-stream 
       :lead-time (range (project :delay-weeks)) 
-      :project project 
+      :project project
+      :old-projects old-projects
       :people people
       :generation generation
       :people-table people-table
