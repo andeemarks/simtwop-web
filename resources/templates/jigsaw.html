@@ -71,14 +71,16 @@ $('.project_table > tbody > tr').click(function() {
     $(this).addClass("project_role_selected_row");
 });
 
-// select/style a role row in the staffing table
+// consider/style a role row in the staffing table
 $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').hover(function() {
+    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_considered_cell");
     $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_cell");
-    $(this).addClass("staffing_plans_selected_cell");
+    $(this).addClass("staffing_plans_considered_cell");
 });
 
 // select/style a role row in the staffing table
 $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(function() {
+    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_considered_cell");
     $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_cell");
     $(this).addClass("staffing_plans_selected_cell");
 });
@@ -92,7 +94,7 @@ var clock = $('.counter').FlipClock(20, {
       if(clock.getTime().time <= 0) {
         clock.reset();
         $('.staffing_plans_project').addClass('disabled')
-        $(".project_table > tbody > tr").removeClass("staffing_plans_selected_cell");
+        $(".project_table > tbody > tr").removeClass("staffing_plans_considered_cell");
         // document.game.submit();
       }     
       clock.decrement();

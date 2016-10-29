@@ -14,6 +14,11 @@ body {
 
 .staffing_plans_selected_cell {
   filter: brightness(150%);
+  border-right: 4px solid #000;
+}
+
+.staffing_plans_considered_cell {
+  filter: brightness(150%);
 }
 
 .staffing_plans_role_cell {
