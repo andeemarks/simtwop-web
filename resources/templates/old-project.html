@@ -1,0 +1,36 @@
+          <div class="old_staffing_plans_project">
+            <div class="staffing_plans_project_header">
+              <h3>Opportunity: <em>{{old-project.type}} ({{old-project.duration-weeks}} weeks)</em></h3>
+            </div>
+            <table class="project_table">
+              <thead>
+                <tr><th/>
+                  {% for dates in old-project.date-stream %}
+                    <th class="staffing_plans_header_month"> {{dates.month}} </th>
+                  {% endfor %}
+                </tr>
+                <tr><th/>
+                  {% for dates in old-project.date-stream %}
+                    <th> {{dates.start-of-week}} </th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+              {% for role in old-project.spots %}
+                <tr class="staffing_plans_role">
+                  <td class="staffing_plans_role_cell open_role_background_{{role.role}}">
+                    <!-- <div class="probability_label_default probability_label_{{role.role}}">100%</div> -->
+                    <div><em>{{role.role}}</em><br />{{role.grade}}</div>
+                  </td>
+                  {% for week in old-project.lead-time %}
+                    <td class="no_open_role"> </td>
+                  {% endfor %}
+                  {% for week in old-project.duration %}
+                    <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
+                  {% endfor %}
+
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
