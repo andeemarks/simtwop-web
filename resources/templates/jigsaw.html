@@ -20,7 +20,7 @@
       <div class="col-sm-9">
         <div class="staffing_plans_project">
           <div class="staffing_plans_project_header">
-            <h3>{{project.type}} ({{project.duration-weeks}} weeks)</h3>
+            <h3>Opportunity: <em>{{project.type}} ({{project.duration-weeks}} weeks)</em></h3>
           </div>
           <table class="project_table">
             <thead>
@@ -77,7 +77,7 @@ $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').hover(func
     $(this).addClass("staffing_plans_selected_row");
 });
 
-var clock = $('.counter').FlipClock(10, {
+var clock = $('.counter').FlipClock(20, {
     clockFace: 'Counter'
   });
 
