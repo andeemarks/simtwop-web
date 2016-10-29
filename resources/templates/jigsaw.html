@@ -83,7 +83,10 @@ $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(func
     $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_considered_cell");
     $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_cell");
     $(this).addClass("staffing_plans_selected_cell");
-    $(this).text($(this).text() - 1);
+    var currentCount = $(this).text();
+    if (currentCount > 0) {
+      $(this).text(currentCount - 1);
+    }
 });
 
 var clock = $('.counter').FlipClock(20, {
