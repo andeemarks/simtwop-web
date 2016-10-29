@@ -70,7 +70,7 @@
           ]]))
 
 (defn jigsaw
-  ([] (jigsaw 0))
+  ([] (jigsaw 1))
   ([generation]
   (let [project (p/demand-generate)
         date-stream (c/generate-date-stream (t/now) (project :end-date))
@@ -92,6 +92,6 @@
       :duration (range (project :duration-weeks))}))))
 
 (defroutes home-routes
-  (POST "/:generation" [generation] (jigsaw generation))
+  (POST "/:generation" [generation] (jigsaw (+ (Integer/parseInt generation) 1)))
   (GET "/" [] (jigsaw)))
 
