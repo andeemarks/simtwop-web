@@ -78,8 +78,6 @@
         date-stream (c/generate-date-stream (t/now) (project :end-date))
         people (ps/ps-frequencies (ps/ps-populate 100))
         people-table (format-people-table people)
-        _ (aprint people)
-        _ (aprint people-table)
         roles (project :spots)]
 
     (db/save-project project)
