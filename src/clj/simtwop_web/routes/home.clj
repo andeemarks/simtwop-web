@@ -73,6 +73,13 @@
           (staffing-count-row-for "ux" (people '(:ux :principal)))]
           ]]))
 
+(defn- augment-project [project date-stream]
+  (-> 
+    project
+    (assoc :lead-time (range (project :delay-weeks)))
+    (assoc :duration (range (project :duration-weeks)))
+    (assoc :date-stream date-stream) ))
+
 (defn jigsaw [generation]
   (let [project (p/demand-generate)
         old-projects (db/load-projects)
@@ -81,18 +88,15 @@
         people-table (format-people-table people)
         roles (project :spots)]
 
-    (db/save-project project)
+    
   	(layout/render "jigsaw.html" {
-      :date-stream date-stream 
-      :lead-time (range (project :delay-weeks)) 
-      :project project
+      :project (db/save-project (augment-project project date-stream))
       :old-projects old-projects
       :people people
       :generation generation
       :people-table people-table
       :roles ["BA" "Dev" "PM" "QA" "Specialist" "UX"]
-      :grades ["Grad" "Con" "Senior" "Lead" "Principal"]
-      :duration (range (project :duration-weeks))})))
+      :grades ["Grad" "Con" "Senior" "Lead" "Principal"]})))
 
 (defroutes home-routes
   (POST "/:generation" [generation] (jigsaw (+ (Integer/parseInt generation) 1)))
