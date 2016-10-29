@@ -7,6 +7,7 @@
             [simtwop-web.domain.portfolio :as p]
             [simtwop-web.domain.people :as ps]
             [hiccup.core :as h]
+            [hiccup.form :as f]
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
   
@@ -14,7 +15,8 @@
   {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)})
 
 (defn- staffing-count-row-for [role count]
-  [:td (styles-for role) (or count 0)])
+  [:td (styles-for role) (or count 0)
+    (f/hidden-field "count" count)])
 
 (defn- format-people-table [people]
   (h/html
