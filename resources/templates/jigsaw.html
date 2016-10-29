@@ -84,6 +84,7 @@ var clock = $('.counter').FlipClock(10, {
         clock.reset();
         $('.staffing_plans_project').addClass('disabled')
         $(".project_table > tbody > tr").removeClass("staffing_plans_selected_row");
+        location.reload();
         // clearInterval(interval);
       }     
       clock.decrement();
