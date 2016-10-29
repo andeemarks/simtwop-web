@@ -24,7 +24,7 @@
                  [luminus-nrepl "0.1.4"]
                  [luminus-migrations "0.2.7"]
                  [conman "0.6.1"]
-                 [com.h2database/h2 "1.4.192"]
+                 [com.novemberain/monger "3.1.0"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
                  [luminus-immutant "0.2.2"]]
 
