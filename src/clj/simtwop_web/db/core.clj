@@ -1,12 +1,10 @@
 (ns simtwop-web.db.core
-  (:require
-    [conman.core :as conman]
-    [mount.core :refer [defstate]]
-    [simtwop-web.config :refer [env]]))
+  (:require [monger.core :as mg]
+  					[simtwop-web.config :refer [env]])
+  (:require monger.joda-time)
+  (:require [monger.collection :as mc]))
 
-(defstate ^:dynamic *db*
-           :start (conman/connect! {:jdbc-url (env :database-url)})
-           :stop (conman/disconnect! *db*))
-
-(conman/bind-connection *db* "sql/queries.sql")
-
+(defn save-project [project]
+	(let [uri "mongodb://127.0.0.1/simtwop"
+    		{:keys [conn db]} (mg/connect-via-uri uri)]
+    (mc/insert-and-return db "projects" project)))

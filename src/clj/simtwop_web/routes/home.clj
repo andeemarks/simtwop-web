@@ -4,6 +4,7 @@
   (:require [simtwop-web.layout :as layout]
             [compojure.core :refer [defroutes GET POST]]
             [simtwop-web.domain.core :as c]
+            [simtwop-web.db.core :as db]
             [simtwop-web.domain.portfolio :as p]
             [simtwop-web.domain.people :as ps]
             [hiccup.core :as h]
@@ -81,6 +82,7 @@
         _ (aprint people-table)
         roles (project :spots)]
 
+    (db/save-project project)
   	(layout/render "jigsaw.html" {
       :date-stream date-stream 
       :lead-time (range (project :delay-weeks)) 
