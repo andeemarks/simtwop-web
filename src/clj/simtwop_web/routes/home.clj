@@ -89,5 +89,6 @@
       :duration (range (project :duration-weeks))})))
 
 (defroutes home-routes
+  (GET "/:count" [count] (jigsaw))
   (GET "/" [] (jigsaw)))
 
