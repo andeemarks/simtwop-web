@@ -2,7 +2,7 @@
   (:require [clj-time.core :as t])
   (:require [aprint.core :refer :all])
   (:require [simtwop-web.layout :as layout]
-            [compojure.core :refer [defroutes GET]]
+            [compojure.core :refer [defroutes GET POST]]
             [simtwop-web.domain.core :as c]
             [simtwop-web.domain.portfolio :as p]
             [simtwop-web.domain.people :as ps]
@@ -89,6 +89,6 @@
       :duration (range (project :duration-weeks))})))
 
 (defroutes home-routes
-  (GET "/:count" [count] (jigsaw))
+  (POST "/" [] (jigsaw))
   (GET "/" [] (jigsaw)))
 
