@@ -18,9 +18,9 @@
         <div class="counter"></div>
       </div>
       <div class="col-sm-9">
-        {% include "current-project.html" %}
-        {% for old-project in old-projects %}
-          {% include "old-project.html" %}
+        {% include "project-table.html" with main-style="staffing_plans_project" %}
+        {% for project in old-projects %}
+          {% include "project-table.html" with main-style="old_staffing_plans_project" %}
         {% endfor %}
       </div>  
     </div>  
