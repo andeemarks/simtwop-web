@@ -1,5 +1,6 @@
 (ns simtwop-web.db.core
   (:require [monger.core :as mg]
+  					[monger.query :as q]
   					[simtwop-web.config :refer [env]])
   (:require monger.joda-time)
   (:require [monger.collection :as mc]))
@@ -8,7 +9,10 @@
 
 (defn load-projects []
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
-    (mc/find-maps db "projects")))
+		(q/with-collection db "projects"
+			(q/find {})
+			(q/limit 10)
+			(q/sort (array-map :created-on -1)))))
 
 (defn save-project [project]
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
