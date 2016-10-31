@@ -5,11 +5,11 @@
   (:require [monger.collection :as mc]))
 
 (defn load-projects []
-	(let [uri "mongodb://127.0.0.1/simtwop"
+	(let [uri (env :database-url)
     		{:keys [conn db]} (mg/connect-via-uri uri)]
     (mc/find-maps db "projects")))
 
 (defn save-project [project]
-	(let [uri "mongodb://127.0.0.1/simtwop"
+	(let [uri (env :database-url)
     		{:keys [conn db]} (mg/connect-via-uri uri)]
     (mc/insert-and-return db "projects" project)))
