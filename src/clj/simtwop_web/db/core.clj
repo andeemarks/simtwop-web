@@ -4,12 +4,12 @@
   (:require monger.joda-time)
   (:require [monger.collection :as mc]))
 
+(def db-url (env :database-url))
+
 (defn load-projects []
-	(let [uri (env :database-url)
-    		{:keys [conn db]} (mg/connect-via-uri uri)]
+	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
     (mc/find-maps db "projects")))
 
 (defn save-project [project]
-	(let [uri (env :database-url)
-    		{:keys [conn db]} (mg/connect-via-uri uri)]
+	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
     (mc/insert-and-return db "projects" project)))
