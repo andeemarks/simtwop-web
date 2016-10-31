@@ -78,6 +78,7 @@
     project
     (assoc :lead-time (range (project :delay-weeks)))
     (assoc :duration (range (project :duration-weeks)))
+    (assoc :created-on (t/date-time))
     (assoc :date-stream date-stream) ))
 
 (def timeline (c/generate-date-stream (t/now) (t/plus (t/now) (t/weeks 36))))
