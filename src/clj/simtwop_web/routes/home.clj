@@ -80,17 +80,17 @@
     (assoc :duration (range (project :duration-weeks)))
     (assoc :date-stream date-stream) ))
 
+(def timeline (c/generate-date-stream (t/now) (t/plus (t/now) (t/weeks 36))))
+
 (defn jigsaw [generation]
   (let [project (p/demand-generate)
         old-projects (db/load-projects)
-        date-stream (c/generate-date-stream (t/now) (project :end-date))
         people (ps/ps-frequencies (ps/ps-populate 100))
         people-table (format-people-table people)
         roles (project :spots)]
-
     
   	(layout/render "jigsaw.html" {
-      :project (db/save-project (augment-project project date-stream))
+      :project (db/save-project (augment-project project timeline))
       :old-projects old-projects
       :people people
       :generation generation
