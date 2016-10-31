@@ -43,7 +43,7 @@
 
 (defmethod project-picker :medium-delivery [_] (ProjectTemplate. 
 					"Medium Delivery Project" 
-					[8 12 12 16 16 24 24 30 36]
+					[12 16 16 24 24 30 30]
 					[
 						(spot :con :qa) 
 						(spot :senior :ba) 
@@ -55,7 +55,7 @@
 
 (defmethod project-picker :large-delivery [_] (ProjectTemplate. 
 					"Large Delivery Project" 
-					[16 16 24 24 30 30 36 36 48 48 48]
+					[16 16 24 24 30 30 36 36]
 					[
 						(spot :senior :qa) 
 						(spot :lead :ba) 
@@ -70,7 +70,7 @@
 
 (defmethod project-picker :staff-aug [_] (ProjectTemplate. 
 					"Staff Augmentation" 
-					[16 16 24 24 30 30 36 36 48 48 48]
+					[16 16 24 24 30 30 36 36]
 					[	(spot :con :dev)
 						(spot :con :dev) 
 						(spot :con :dev) 
