@@ -38,6 +38,15 @@
 
 <script type="text/javascript">
 
+function logAction() {
+  var actionLog = document.getElementById("action_log");
+  // var firstname = document.getElementById('firstname').value;
+  var action = document.createElement("li");
+  action.appendChild(document.createTextNode("Hey - you did something!"));
+  action.setAttribute("class", "action_log_item");
+  actionLog.appendChild(action);
+}
+
 // select/style a role row in the project table
 $('.staffing_plans_project > .project_table > tbody > tr').click(function() {
     $(".staffing_plans_project > .project_table > tbody > tr").removeClass("project_role_selected_row");
@@ -61,12 +70,7 @@ $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(func
       $(this).text(currentCount - 1);
     }
 
-    var actionLog = document.getElementById("action_log");
-    // var firstname = document.getElementById('firstname').value;
-    var action = document.createElement("li");
-    action.appendChild(document.createTextNode("Hey - you did something!"));
-    action.setAttribute("class", "action_log_item");
-    actionLog.appendChild(action);
+    logAction();
 });
 
 var clock = $('.counter').FlipClock(20, {
