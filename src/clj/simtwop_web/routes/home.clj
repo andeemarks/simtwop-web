@@ -87,17 +87,14 @@
   (let [project (p/demand-generate)
         old-projects (db/load-projects)
         people (ps/ps-frequencies (ps/ps-populate 100))
-        people-table (format-people-table people)
-        roles (project :spots)]
+        people-table (format-people-table people)]
     
   	(layout/render "jigsaw.html" {
-      :project (db/save-project (augment-project project timeline))
       :old-projects old-projects
+      :project (db/save-project (augment-project project timeline))
       :people people
       :generation generation
-      :people-table people-table
-      :roles ["BA" "Dev" "PM" "QA" "Specialist" "UX"]
-      :grades ["Grad" "Con" "Senior" "Lead" "Principal"]})))
+      :people-table people-table})))
 
 (defroutes home-routes
   (POST "/:generation" [generation] (jigsaw (+ (Integer/parseInt generation) 1)))
