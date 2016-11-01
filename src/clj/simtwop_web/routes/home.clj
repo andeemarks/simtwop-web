@@ -12,12 +12,13 @@
             [ring.util.http-response :as response]
             [clojure.java.io :as io]))
   
-(defn- styles-for [role]
-  {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)})
+(defn- attributes-for [role grade]
+  {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)
+   :id (str role "_" grade)})
 
-(defn- staffing-count-row-for [role count]
+(defn- staffing-count-row-for [role grade count]
   (let [actual-count (or count 0)]
-    [:td (styles-for role) actual-count
+    [:td (attributes-for role grade) actual-count
       (f/hidden-field (str "count-" role) actual-count)]))
 
 (defn- format-people-table [people]
@@ -31,46 +32,46 @@
       [:tbody
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ba"} "ba"]
-          (staffing-count-row-for "ba" (people '(:ba :grad)))
-          (staffing-count-row-for "ba" (people '(:ba :con)))
-          (staffing-count-row-for "ba" (people '(:ba :senior)))
-          (staffing-count-row-for "ba" (people '(:ba :lead)))
-          (staffing-count-row-for "ba" (people '(:ba :principal)))]
+          (staffing-count-row-for "ba" "grad"      (people '(:ba :grad)))
+          (staffing-count-row-for "ba" "con"       (people '(:ba :con)))
+          (staffing-count-row-for "ba" "senior"    (people '(:ba :senior)))
+          (staffing-count-row-for "ba" "lead"      (people '(:ba :lead)))
+          (staffing-count-row-for "ba" "principal" (people '(:ba :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_dev"} "dev"]
-          (staffing-count-row-for "dev" (people '(:dev :grad)))
-          (staffing-count-row-for "dev" (people '(:dev :con)))
-          (staffing-count-row-for "dev" (people '(:dev :senior)))
-          (staffing-count-row-for "dev" (people '(:dev :lead)))
-          (staffing-count-row-for "dev" (people '(:dev :principal)))]
+          (staffing-count-row-for "dev" "grad"      (people '(:dev :grad)))
+          (staffing-count-row-for "dev" "con"       (people '(:dev :con)))
+          (staffing-count-row-for "dev" "senior"    (people '(:dev :senior)))
+          (staffing-count-row-for "dev" "lead"      (people '(:dev :lead)))
+          (staffing-count-row-for "dev" "principal" (people '(:dev :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_pm"} "pm"]
-          (staffing-count-row-for "pm" (people '(:pm :grad)))
-          (staffing-count-row-for "pm" (people '(:pm :con)))
-          (staffing-count-row-for "pm" (people '(:pm :senior)))
-          (staffing-count-row-for "pm" (people '(:pm :lead)))
-          (staffing-count-row-for "pm" (people '(:pm :principal)))]
+          (staffing-count-row-for "pm" "grad"      (people '(:pm :grad)))
+          (staffing-count-row-for "pm" "con"       (people '(:pm :con)))
+          (staffing-count-row-for "pm" "senior"    (people '(:pm :senior)))
+          (staffing-count-row-for "pm" "lead"      (people '(:pm :lead)))
+          (staffing-count-row-for "pm" "principal" (people '(:pm :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_qa"} "qa"]
-          (staffing-count-row-for "qa" (people '(:qa :grad)))
-          (staffing-count-row-for "qa" (people '(:qa :con)))
-          (staffing-count-row-for "qa" (people '(:qa :senior)))
-          (staffing-count-row-for "qa" (people '(:qa :lead)))
-          (staffing-count-row-for "qa" (people '(:qa :principal)))]
+          (staffing-count-row-for "qa" "grad"      (people '(:qa :grad)))
+          (staffing-count-row-for "qa" "con"       (people '(:qa :con)))
+          (staffing-count-row-for "qa" "senior"    (people '(:qa :senior)))
+          (staffing-count-row-for "qa" "lead"      (people '(:qa :lead)))
+          (staffing-count-row-for "qa" "principal" (people '(:qa :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_specialist"} "specialist"]
-          (staffing-count-row-for "specialist" (people '(:specialist :grad)))
-          (staffing-count-row-for "specialist" (people '(:specialist :con)))
-          (staffing-count-row-for "specialist" (people '(:specialist :senior)))
-          (staffing-count-row-for "specialist" (people '(:specialist :lead)))
-          (staffing-count-row-for "specialist" (people '(:specialist :principal)))]
+          (staffing-count-row-for "specialist" "grad"      (people '(:specialist :grad)))
+          (staffing-count-row-for "specialist" "con"       (people '(:specialist :con)))
+          (staffing-count-row-for "specialist" "senior"    (people '(:specialist :senior)))
+          (staffing-count-row-for "specialist" "lead"      (people '(:specialist :lead)))
+          (staffing-count-row-for "specialist" "principal" (people '(:specialist :principal)))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ux"} "ux"]
-          (staffing-count-row-for "ux" (people '(:ux :grad)))
-          (staffing-count-row-for "ux" (people '(:ux :con)))
-          (staffing-count-row-for "ux" (people '(:ux :senior)))
-          (staffing-count-row-for "ux" (people '(:ux :lead)))
-          (staffing-count-row-for "ux" (people '(:ux :principal)))]
+          (staffing-count-row-for "ux" "grad"      (people '(:ux :grad)))
+          (staffing-count-row-for "ux" "con"       (people '(:ux :con)))
+          (staffing-count-row-for "ux" "senior"    (people '(:ux :senior)))
+          (staffing-count-row-for "ux" "lead"      (people '(:ux :lead)))
+          (staffing-count-row-for "ux" "principal" (people '(:ux :principal)))]
           ]]))
 
 (defn- augment-project [project date-stream]
