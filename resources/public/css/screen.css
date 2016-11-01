@@ -115,6 +115,18 @@ table.staffing_table {
   height: 36px;
 }
 
+.action-log-table {
+  text-align: left;
+  position: relative;
+}
+
+.action-log {
+  font-size: 10px;
+  font-weight: lighter;
+  font-style: italic;
+  list-style: none;
+}
+
 .open_role_background_dev {
   background-color: #0cb0c6 !important
 }
