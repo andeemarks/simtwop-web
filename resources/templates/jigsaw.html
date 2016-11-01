@@ -68,9 +68,9 @@ $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(func
     var currentCount = $(this).text();
     if (currentCount > 0) {
       $(this).text(currentCount - 1);
+      logAction("Assigned " + $(this).attr('id') + " to '{{project.type}}'' - " + (currentCount - 1) + " remaining");
     }
 
-    logAction("Assigned " + $(this).attr('id') + " to {{project.type}} - " + (currentCount - 1) + " remaining");
 });
 
 var clock = $('.counter').FlipClock(20, {

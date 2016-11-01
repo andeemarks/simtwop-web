@@ -14,7 +14,7 @@
   
 (defn- attributes-for [role grade]
   {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)
-   :id (str role "_" grade)})
+   :id (str grade "_" role)})
 
 (defn- staffing-count-row-for [role grade count]
   (let [actual-count (or count 0)]
