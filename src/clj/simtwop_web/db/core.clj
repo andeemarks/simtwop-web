@@ -5,7 +5,8 @@
   (:require monger.joda-time)
   (:require [monger.collection :as mc]))
 
-(def db-url (env :database-url))
+; (def db-url (env :database-url))
+(def db-url "mongodb://127.0.0.1/simtwop")
 
 (defn load-projects []
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
