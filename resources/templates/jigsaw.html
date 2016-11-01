@@ -47,23 +47,26 @@ function logAction(actionText) {
   actionLog.appendChild(action);
 }
 
+const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
+const PROJECT_ROLE_ROW = ".staffing_plans_project > .project_table > tbody > tr";
+
 // select/style a role row in the project table
-$('.staffing_plans_project > .project_table > tbody > tr').click(function() {
-    $(".staffing_plans_project > .project_table > tbody > tr").removeClass("project_role_selected_row");
+$(PROJECT_ROLE_ROW).hover(function() {
+    $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
     $(this).addClass("project_role_selected_row");
 });
 
 // consider/style a role row in the staffing table
-$('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').hover(function() {
-    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_considered_cell");
-    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_cell");
+$(STAFF_COUNT_CELL).hover(function() {
+    $(STAFF_COUNT_CELL).removeClass("staffing_plans_considered_cell");
+    $(STAFF_COUNT_CELL).removeClass("staffing_plans_selected_cell");
     $(this).addClass("staffing_plans_considered_cell");
 });
 
 // select/style a role row in the staffing table
-$('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(function() {
-    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_considered_cell");
-    $(".staffing_table > tbody > tr > td.staffing_plans_role_cell_count").removeClass("staffing_plans_selected_cell");
+$(STAFF_COUNT_CELL).click(function() {
+    $(STAFF_COUNT_CELL).removeClass("staffing_plans_considered_cell");
+    $(STAFF_COUNT_CELL).removeClass("staffing_plans_selected_cell");
     $(this).addClass("staffing_plans_selected_cell");
     var currentCount = $(this).text();
     if (currentCount > 0) {
