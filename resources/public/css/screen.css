@@ -115,12 +115,12 @@ table.staffing_table {
   height: 36px;
 }
 
-.action-log-table {
+.action_log_table {
   text-align: left;
   position: relative;
 }
 
-.action-log {
+.action_log_item {
   font-size: 10px;
   font-weight: lighter;
   font-style: italic;

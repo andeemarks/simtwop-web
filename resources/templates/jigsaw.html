@@ -16,9 +16,9 @@
 
         </div>
         <div class="counter"></div>
-        <div class="action-log-table">
-          <ul>
-            <li class="action-log">A record of each staffing action will appear here</li>
+        <div class="action_log_table">
+          <ul id="action_log">
+            <li class="action_log_item">A record of each staffing action will appear here</li>
           </ul>
         </div>
       </div>
@@ -60,6 +60,13 @@ $('.staffing_table > tbody > tr > td.staffing_plans_role_cell_count').click(func
     if (currentCount > 0) {
       $(this).text(currentCount - 1);
     }
+
+    var actionLog = document.getElementById("action_log");
+    // var firstname = document.getElementById('firstname').value;
+    var action = document.createElement("li");
+    action.appendChild(document.createTextNode("Hey - you did something!"));
+    action.setAttribute("class", "action_log_item");
+    actionLog.appendChild(action);
 });
 
 var clock = $('.counter').FlipClock(20, {
