@@ -73,6 +73,12 @@ table.staffing_table {
   font-size: 12px;
 }
 
+.staffing_plans_role_title_cell {
+  max-width: 60px;
+  min-width: 60px;
+
+}
+
 .staffing_plans_project {
   margin-bottom: 30px;
   padding-bottom: 10px;

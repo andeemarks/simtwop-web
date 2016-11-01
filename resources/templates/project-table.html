@@ -18,8 +18,7 @@
             <tbody>
             {% for role in project.spots %}
               <tr class="staffing_plans_role">
-                <td class="staffing_plans_role_cell open_role_background_{{role.role}}">
-                  <!-- <div class="probability_label_default probability_label_{{role.role}}">100%</div> -->
+                <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                   <div><em>{{role.role}}</em><br />{{role.grade}}</div>
                 </td>
                 {% for week in project.lead-time %}
