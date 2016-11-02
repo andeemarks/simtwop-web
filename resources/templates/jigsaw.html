@@ -49,23 +49,31 @@ function logAction(actionText) {
   actionLog.insertBefore(action, actionLog.childNodes[0]);
 }
 
+function assignStaffToSelectedRole(selectedStaff) {
+    var currentCount = $(selectedStaff).text();
+    if (currentCount > 0) {
+      $(selectedStaff).text(currentCount - 1);
+      logAction("Assigned " + $(selectedStaff).attr('id') + " - " + (currentCount - 1) + " remaining");
+    }
+}
+
+function selectProjectRole(selectedRole) {
+  $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
+  $(selectedRole).addClass("project_role_selected_row");
+  logAction("Selected project role ''");
+  selectedProjectRole = $(selectedRole);  
+}
+
 const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
 const PROJECT_ROLE_ROW = ".staffing_plans_project > .project_table > tbody > tr";
 
 $(PROJECT_ROLE_ROW).click(function() {
-    $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
-    $(this).addClass("project_role_selected_row");
-    logAction("Selected project role ''");
-    selectedProjectRole = $(this);
+  selectProjectRole(this);
 });
 
 $(STAFF_COUNT_CELL).click(function() {
     if (selectedProjectRole != null) {
-      var currentCount = $(this).text();
-      if (currentCount > 0) {
-        $(this).text(currentCount - 1);
-        logAction("Assigned " + $(this).attr('id') + " - " + (currentCount - 1) + " remaining");
-      }
+      assignStaffToSelectedRole(this);
     }
 });
 
