@@ -4,10 +4,6 @@ body {
   height: 100%;
 }
 
-.staffing_plans_header_month {
-  background-color: #ededed;
-}
-
 .project_role_highlighted_row {
   filter: brightness(150%);
 }
@@ -16,8 +12,17 @@ body {
   outline: thin solid black;
 }
 
+.staffing_plans_header_month {
+  background-color: #ededed;
+}
+
 .staffing_plans_selected_cell {
   outline: thick solid black;
+}
+
+.staffing_plans_project_header {
+  margin: 0 4px 2px;
+  padding-bottom: 7px;
 }
 
 .staffing_plans_highlighted_cell {
@@ -38,11 +43,6 @@ h3 {
   font-family: opensans-light, Open Sans, Helvetica, Arial;
   font-weight: 400;
   color: #999
-}
-
-.staffing_plans_project_header {
-  margin: 0 4px 2px;
-  padding-bottom: 7px;
 }
 
 em {

@@ -59,6 +59,7 @@ $(PROJECT_ROLE_ROW).hover(function() {
 $(PROJECT_ROLE_ROW).click(function() {
     $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
     $(this).addClass("project_role_selected_row");
+    logAction("Selected project role ''");
 });
 
 // consider/style a role row in the staffing table
