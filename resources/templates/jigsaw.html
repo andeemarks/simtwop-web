@@ -55,7 +55,9 @@ function assignStaffToSelectedRole(selectedStaff) {
     $(selectedStaff).text(currentCount - 1);
     logAction("Assigned " + $(selectedStaff).attr('id') + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
-    alert($(selectedProjectRole));   
+    $(selectedProjectRole).find('td.open_role').each (function() {
+      $(this).text("X");
+    });                          
   }
 }
 
