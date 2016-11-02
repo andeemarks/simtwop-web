@@ -38,6 +38,13 @@ tr.old_staffing_plans_header_month {
   padding-bottom: 7px;
 }
 
+
+.staffing_plans_role_cell > a, .staffing_plans_role_cell > a:hover {
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none; 
+}
+
 .staffing_plans_role_cell {
   color: #ffffff;
   width: 6%;
