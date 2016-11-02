@@ -25,7 +25,7 @@
       <div class="col-sm-9">
         {% include "project-table.html" %}
         <!-- {{old-projects|count}} -->
-        <h3><a href="#" data-toggle="tooltip" title="Past projects you've been presented with">Past projects</a></h3>
+        <h3>Past projects</h3>
         {% for project in old-projects %}
           {% include "old-project-table.html" %}
         {% endfor %}
@@ -66,18 +66,17 @@ function assignStaffToSelectedRole(selectedStaff) {
   var currentCount = $(selectedStaff).text();
   if (currentCount > 0) {
     $(selectedStaff).text(currentCount - 1);
-    logAction("Assigned " + gradeRoleTupleToString($(selectedStaff).attr('id')) + " - " + (currentCount - 1) + " remaining");
+    var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));
+    logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
     $(selectedProjectRole).find('td.open_role').each (function() {
       $(this).addClass("assigned_role");
-    });                          
+    });                    
+    $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
+      $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('show');
+    });      
   }
 }
-
-// $('.case').each(function() {
-//   var link = $(this).html();
-//   $(this).contents().wrap('<a href="example.com/script.php?id='+link+'"></a>');
-// });
 
 function selectProjectRole(selectedRole) {
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
