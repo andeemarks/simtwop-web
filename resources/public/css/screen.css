@@ -16,6 +16,10 @@ td.staffing_plans_role_cell_count:hover {
   outline: thin dashed black;
 }
 
+.project_role_assigned_row {
+  outline: thin solid green;
+}
+
 tr.old_staffing_plans_header_month {
   color: white;
   height: 0px;
