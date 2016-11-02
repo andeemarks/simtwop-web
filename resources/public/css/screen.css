@@ -17,11 +17,10 @@ body {
 }
 
 .staffing_plans_selected_cell {
-  filter: brightness(150%);
-  outline: thin solid black;
+  outline: thick solid black;
 }
 
-.staffing_plans_considered_cell {
+.staffing_plans_highlighted_cell {
   filter: brightness(150%);
 }
 
