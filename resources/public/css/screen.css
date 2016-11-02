@@ -13,7 +13,7 @@ td.staffing_plans_role_cell_count:hover {
 }
 
 .project_role_selected_row {
-  outline: thin solid black;
+  outline: thin dashed black;
 }
 
 .staffing_plans_header_month {
