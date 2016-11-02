@@ -44,7 +44,7 @@ function logAction(actionText) {
   var actionLog = document.getElementById("action_log");
   var action = document.createElement("li");
   action.appendChild(document.createTextNode(actionText));
-  actionLog.appendChild(action);
+  actionLog.insertBefore(action, actionLog.childNodes[0]);
 }
 
 const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
