@@ -4,6 +4,10 @@ body {
   height: 100%;
 }
 
+.staffing_plans_project > .project_table > tbody > tr:hover {
+  filter: brightness(150%);
+}
+
 .project_role_highlighted_row {
   filter: brightness(150%);
 }
