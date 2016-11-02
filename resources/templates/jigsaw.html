@@ -98,6 +98,15 @@ $(STAFF_COUNT_CELL).click(function() {
   }
 });
 
+function handleTimerExpiry() {
+  clock.reset();
+  selectedProjectRole = null;
+  $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
+  $(PROJECT_ROLE_ROW).removeClass("project_role_assigned_row");
+  // $('.staffing_plans_project').addClass('disabled')
+  // document.game.submit();
+}
+
 var clock = $('.counter').FlipClock(20, {
     clockFace: 'Counter'
   });
@@ -105,11 +114,7 @@ var clock = $('.counter').FlipClock(20, {
   setTimeout(function() {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
-        clock.reset();
-        selectedProjectRole = null;
-        $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
-        // $('.staffing_plans_project').addClass('disabled')
-        // document.game.submit();
+        handleTimerExpiry();
       }     
       clock.decrement();
     }, 1000);
