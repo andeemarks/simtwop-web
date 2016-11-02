@@ -8,13 +8,17 @@ body {
   background-color: #ededed;
 }
 
-.project_role_selected_row {
+.project_role_highlighted_row {
   filter: brightness(150%);
+}
+
+.project_role_selected_row {
+  outline: thin solid black;
 }
 
 .staffing_plans_selected_cell {
   filter: brightness(150%);
-  border-right: 4px solid #000;
+  outline: thin solid black;
 }
 
 .staffing_plans_considered_cell {
