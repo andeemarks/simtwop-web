@@ -65,7 +65,7 @@ $(STAFF_COUNT_CELL).click(function() {
       var currentCount = $(this).text();
       if (currentCount > 0) {
         $(this).text(currentCount - 1);
-        logAction("Assigned " + $(this).attr('id') + " to '{{project.type}}'' - " + (currentCount - 1) + " remaining");
+        logAction("Assigned " + $(this).attr('id') + " - " + (currentCount - 1) + " remaining");
       }
     }
 });
