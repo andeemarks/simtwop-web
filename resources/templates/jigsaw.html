@@ -19,7 +19,6 @@
         <h3>Staffing Actions</h3>
         <div class="action_log_table">
           <ul id="action_log">
-            <li>A record of each staffing action will appear here</li>
           </ul>
         </div>
       </div>
@@ -60,7 +59,6 @@ $(PROJECT_ROLE_ROW).click(function() {
     selectedProjectRole = $(this);
 });
 
-// select/style a role row in the staffing table
 $(STAFF_COUNT_CELL).click(function() {
     if (selectedProjectRole != null) {
       var currentCount = $(this).text();
