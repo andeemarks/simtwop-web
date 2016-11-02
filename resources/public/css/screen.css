@@ -115,16 +115,17 @@ table.staffing_table {
   height: 36px;
 }
 
-.action_log_table {
-  text-align: left;
-  position: relative;
-}
-
-.action_log_item {
+ul.action_log {
+  padding: 0;
+  list-style: none;
   font-size: 10px;
   font-weight: lighter;
   font-style: italic;
-  list-style: none;
+}
+
+.action_log_table {
+  text-align: left;
+  position: relative;
 }
 
 .open_role_background_dev {

@@ -16,9 +16,10 @@
 
         </div>
         <div class="counter"></div>
+        <h3>Staffing Actions</h3>
         <div class="action_log_table">
-          <ul id="action_log">
-            <li class="action_log_item">A record of each staffing action will appear here</li>
+          <ul class="action_log">
+            <li>A record of each staffing action will appear here</li>
           </ul>
         </div>
       </div>
@@ -43,7 +44,6 @@ function logAction(actionText) {
   var actionLog = document.getElementById("action_log");
   var action = document.createElement("li");
   action.appendChild(document.createTextNode(actionText));
-  action.setAttribute("class", "action_log_item");
   actionLog.appendChild(action);
 }
 
@@ -84,8 +84,8 @@ var clock = $('.counter').FlipClock(20, {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
         clock.reset();
-        $('.staffing_plans_project').addClass('disabled')
         $(".project_table > tbody > tr").removeClass("staffing_plans_considered_cell");
+        // $('.staffing_plans_project').addClass('disabled')
         // document.game.submit();
       }     
       clock.decrement();
