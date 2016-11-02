@@ -16,6 +16,11 @@ td.staffing_plans_role_cell_count:hover {
   outline: thin dashed black;
 }
 
+tr.old_staffing_plans_header_month {
+  color: white;
+  height: 0px;
+}
+
 .staffing_plans_header_month {
   background-color: #ededed;
 }
@@ -90,8 +95,6 @@ table.staffing_table {
 }
 
 .old_staffing_plans_project {
-  margin-bottom: 10px;
-  padding-bottom: 5px;
   position: relative;
   font-size: 12px;
 }

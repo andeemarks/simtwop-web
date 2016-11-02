@@ -25,7 +25,8 @@
       </div>
       <div class="col-sm-9">
         {% include "project-table.html" %}
-        {{old-projects|count}}
+        <!-- {{old-projects|count}} -->
+        <h3>Old projects</h3>
         {% for project in old-projects %}
           {% include "old-project-table.html" %}
         {% endfor %}

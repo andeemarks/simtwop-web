@@ -1,14 +1,9 @@
         <div class="old_staffing_plans_project">
           <table class="project_table">
             <thead>
-              <tr><th/>
+              <tr class="old_staffing_plans_header_month"><th/>
                 {% for dates in project.date-stream %}
-                  <th class="staffing_plans_header_month"> {{dates.month}} </th>
-                {% endfor %}
-              </tr>
-              <tr><th/>
-                {% for dates in project.date-stream %}
-                  <th> {{dates.start-of-week}} </th>
+                  <th> {{dates.month}} </th>
                 {% endfor %}
               </tr>
             </thead>
