@@ -50,11 +50,11 @@ function logAction(actionText) {
 }
 
 function assignStaffToSelectedRole(selectedStaff) {
-    var currentCount = $(selectedStaff).text();
-    if (currentCount > 0) {
-      $(selectedStaff).text(currentCount - 1);
-      logAction("Assigned " + $(selectedStaff).attr('id') + " - " + (currentCount - 1) + " remaining");
-    }
+  var currentCount = $(selectedStaff).text();
+  if (currentCount > 0) {
+    $(selectedStaff).text(currentCount - 1);
+    logAction("Assigned " + $(selectedStaff).attr('id') + " - " + (currentCount - 1) + " remaining");
+  }
 }
 
 function selectProjectRole(selectedRole) {
@@ -72,9 +72,9 @@ $(PROJECT_ROLE_ROW).click(function() {
 });
 
 $(STAFF_COUNT_CELL).click(function() {
-    if (selectedProjectRole != null) {
-      assignStaffToSelectedRole(this);
-    }
+  if (selectedProjectRole != null) {
+    assignStaffToSelectedRole(this);
+  }
 });
 
 var clock = $('.counter').FlipClock(20, {
