@@ -115,7 +115,7 @@ table.staffing_table {
   height: 36px;
 }
 
-ul.action_log {
+ul#action_log {
   padding: 0;
   list-style: none;
   font-size: 10px;
