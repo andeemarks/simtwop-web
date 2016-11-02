@@ -215,8 +215,16 @@ ul#action_log {
 
 }
 
+.overstaffed_role:before {
+  content: "😫";
+}
+
+.understaffed_role:before {
+  content: "😣";
+}
+
 .assigned_role:before {
-  content: "✓";
+  content: "😃";
 }
 
 @media (min-width: 34em) {
