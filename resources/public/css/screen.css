@@ -205,6 +205,11 @@ ul#action_log {
   padding: 4px;
   border-right: 4px solid #fff;
   background: rgba(154, 160, 165, 0.31)
+
+}
+
+.assigned_role:before {
+  content: "✓";
 }
 
 @media (min-width: 34em) {

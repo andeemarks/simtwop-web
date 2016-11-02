@@ -25,7 +25,7 @@
       <div class="col-sm-9">
         {% include "project-table.html" %}
         <!-- {{old-projects|count}} -->
-        <h3>Past projects</h3>
+        <h3><a href="#" data-toggle="tooltip" title="Past projects you've been presented with">Past projects</a></h3>
         {% for project in old-projects %}
           {% include "old-project-table.html" %}
         {% endfor %}
@@ -39,6 +39,10 @@
 {% block page-scripts %}
 
 <script type="text/javascript">
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
 
 String.prototype.capitalise = function() {
     return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
@@ -65,7 +69,7 @@ function assignStaffToSelectedRole(selectedStaff) {
     logAction("Assigned " + gradeRoleTupleToString($(selectedStaff).attr('id')) + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
     $(selectedProjectRole).find('td.open_role').each (function() {
-      $(this).text("✓");
+      $(this).addClass("assigned_role");
     });                          
   }
 }
