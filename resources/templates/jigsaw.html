@@ -24,10 +24,10 @@
         </div>
       </div>
       <div class="col-sm-9">
-        {% include "project-table.html" with main-style="staffing_plans_project" %}
+        {% include "project-table.html" %}
         {{old-projects|count}}
         {% for project in old-projects %}
-          {% include "project-table.html" with main-style="old_staffing_plans_project" %}
+          {% include "old-project-table.html" %}
         {% endfor %}
       </div>  
     </div>  
