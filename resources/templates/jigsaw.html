@@ -58,8 +58,6 @@ $(PROJECT_ROLE_ROW).click(function() {
 
 // select/style a role row in the staffing table
 $(STAFF_COUNT_CELL).click(function() {
-    $(STAFF_COUNT_CELL).removeClass("staffing_plans_selected_cell");
-    $(this).addClass("staffing_plans_selected_cell");
     var currentCount = $(this).text();
     if (currentCount > 0) {
       $(this).text(currentCount - 1);
