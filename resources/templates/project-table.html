@@ -17,7 +17,7 @@
             </thead>
             <tbody>
             {% for role in project.spots %}
-              <tr class="staffing_plans_role">
+              <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}">
                 <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                   <div><em>{{role.role}}</em><br />{{role.grade}}</div>
                 </td>

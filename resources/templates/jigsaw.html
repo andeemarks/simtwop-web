@@ -55,13 +55,14 @@ function assignStaffToSelectedRole(selectedStaff) {
     $(selectedStaff).text(currentCount - 1);
     logAction("Assigned " + $(selectedStaff).attr('id') + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
+    alert($(selectedProjectRole));   
   }
 }
 
 function selectProjectRole(selectedRole) {
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
   $(selectedRole).addClass("project_role_selected_row");
-  logAction("Selected project role ''");
+  logAction("Selected role for '" + $(selectedRole).attr('id') + "'");
   selectedProjectRole = $(selectedRole);  
 }
 
