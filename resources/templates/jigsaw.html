@@ -74,6 +74,11 @@ function assignStaffToSelectedRole(selectedStaff) {
   }
 }
 
+// $('.case').each(function() {
+//   var link = $(this).html();
+//   $(this).contents().wrap('<a href="example.com/script.php?id='+link+'"></a>');
+// });
+
 function selectProjectRole(selectedRole) {
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
   $(selectedRole).addClass("project_role_selected_row");
