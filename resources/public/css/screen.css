@@ -8,6 +8,10 @@ body {
   filter: brightness(150%);
 }
 
+td.staffing_plans_role_cell_count:hover {
+  filter: brightness(150%);
+}
+
 .project_role_highlighted_row {
   filter: brightness(150%);
 }
