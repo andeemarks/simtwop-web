@@ -33,10 +33,6 @@ td.staffing_plans_role_cell_count:hover {
   padding-bottom: 7px;
 }
 
-.staffing_plans_highlighted_cell {
-  filter: brightness(150%);
-}
-
 .staffing_plans_role_cell {
   color: #ffffff;
   width: 6%;

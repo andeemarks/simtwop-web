@@ -58,7 +58,6 @@ $(PROJECT_ROLE_ROW).click(function() {
 
 // select/style a role row in the staffing table
 $(STAFF_COUNT_CELL).click(function() {
-    $(STAFF_COUNT_CELL).removeClass("staffing_plans_highlighted_cell");
     $(STAFF_COUNT_CELL).removeClass("staffing_plans_selected_cell");
     $(this).addClass("staffing_plans_selected_cell");
     var currentCount = $(this).text();
@@ -77,7 +76,6 @@ var clock = $('.counter').FlipClock(20, {
     var interval = setInterval(function() {
       if(clock.getTime().time <= 0) {
         clock.reset();
-        $(".project_table > tbody > tr").removeClass("staffing_plans_highlighted_cell");
         // $('.staffing_plans_project').addClass('disabled')
         // document.game.submit();
       }     
