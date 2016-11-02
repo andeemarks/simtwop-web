@@ -54,11 +54,8 @@ function logAction(actionText) {
 }
 
 function gradeRoleTupleToString(gradeRoleTuple) {
-  // split on underscore...
-  // $1 = grade, $2 = role
-  // Capitalise each
   var tupleBits = gradeRoleTuple.split("_");
-  return tupleBits[0].capitalise() + " " + tupleBits[1].capitalise();
+  return (tupleBits[0] + " " + tupleBits[1]).capitalise();
 }
 
 function assignStaffToSelectedRole(selectedStaff) {
