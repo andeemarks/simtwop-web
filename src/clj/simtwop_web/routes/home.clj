@@ -96,12 +96,13 @@
         raw-people (ps/ps-frequencies (ps/ps-populate 100))
         complete-people (augment-people raw-people saved-project)
         people-table (format-people-table complete-people)
-        saved-people (db/save-people complete-people)]
+        ; saved-people (db/save-people complete-people)
+        ]
     
   	(layout/render "jigsaw.html" {
       :old-projects old-projects
       :project saved-project
-      :people saved-people
+      :people complete-people
       :generation generation
       :people-table people-table})))
 
@@ -116,8 +117,7 @@
 
   (aprint people-counts)
   ;; Use people-counts in next generation of sim
-  ; (db/save-people (augment-project project timeline)
-  )
+  (db/save-people people-counts))
 
 (defroutes home-routes
   (POST "/:generation"  [generation]  
