@@ -201,6 +201,11 @@ ul#action_log {
   background-color: #21578c
 }
 
+.staffing_plans_undo {
+  filter: brightness(200%);
+  padding: 4px;
+}
+
 .probability_label_default {
   border: 1px;
   border-color: #d4d4d4;

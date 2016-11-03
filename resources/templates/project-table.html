@@ -18,7 +18,7 @@
             <tbody>
             {% for role in project.spots %}
               <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}_{{forloop.counter}}">
-                <td class="staffing_plans_trash_cell"><h3><span class="fa fa-trash" aria-hidden="true"></span></h3></td>
+                <td class="staffing_plans_undo open_role_background_{{role.role}}"><h3><span class="fa fa-trash" aria-hidden="true"></span></h3></td>
                 <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                   <a href="#" data-toggle="tooltip" title="Unassigned"><div><em>{{role.role}}</em><br />{{role.grade}}</div></a>
                 </td>

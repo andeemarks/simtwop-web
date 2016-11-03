@@ -145,11 +145,20 @@ function selectProjectRole(selectedRole) {
   selectedProjectRole = $(selectedRole);  
 }
 
+function unassignStaffFromSelectedRole(selectedRole) {
+  console.log(selectedRole);
+}
+
 const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
 const PROJECT_ROLE_ROW = ".staffing_plans_project > .project_table > tbody > tr";
+const PROJECT_ROLE_ROW_UNDO = ".staffing_plans_project > .project_table > tbody > tr > td.staffing_plans_undo";
 
 $(PROJECT_ROLE_ROW).click(function() {
   selectProjectRole(this);
+});
+
+$(PROJECT_ROLE_ROW_UNDO).click(function() {
+  unassignStaffFromSelectedRole(this);
 });
 
 $(STAFF_COUNT_CELL).click(function() {
