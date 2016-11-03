@@ -3,6 +3,7 @@
 
 <div class="container-fluid">
   <h1 class="page-header">Staffing Simulator</h1>
+
   <form name="game" method="post" action="/{{generation}}">
     {% csrf-field %}
     <div class="row">
@@ -108,6 +109,15 @@ $.fn.removeClassRegex = function(regex) {
     }).join(' ');
   });
 };
+
+function toggleChevron(e) {
+    $(e.target)
+        .prev('.staffing_plans_project_header')
+        .find('i.indicator')
+        .toggleClass('fa-chevron-circle-right fa-chevron-circle-down');
+}
+$('.old_project').on('hidden.bs.collapse', toggleChevron);
+$('.old_project').on('shown.bs.collapse', toggleChevron);
 
 function assignStaffToSelectedRole(selectedStaff) {
   var currentCount = $(selectedStaff).text();
