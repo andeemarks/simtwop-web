@@ -60,9 +60,9 @@ function assignStaffToSelectedRole(selectedStaff) {
 
     $('<input>').attr({
       type: 'hidden',
-      id: selectedProjectRole[0].id,
-      name: selectedProjectRole[0].id,
-      value: $(selectedStaff).attr('id')
+      id: "role-" + selectedProjectRole[0].id,
+      name: "role-" + selectedProjectRole[0].id,
+      value: "assigned-" + $(selectedStaff).attr('id')
       }).appendTo('#game-form');
   }
 }
