@@ -74,12 +74,12 @@ function assessAssignment(selectedProjectRole, selectedStaff) {
   var projectGradeRank = grades.map(function(e) { return e; }).indexOf(projectGrade);
   var projectRole = selectedProjectRoleTuple[1];
 
+  var gradeGap = projectGradeRank - staffGradeRank;
   if (staffRole == projectRole) {
     if (staffGrade == projectGrade) {
       return "staffed_role";
     } 
 
-    var gradeGap = projectGradeRank - staffGradeRank;
     if (gradeGap > 1) {
       return "understaffed_role";
     }
@@ -95,8 +95,12 @@ function assessAssignment(selectedProjectRole, selectedStaff) {
     if (gradeGap < -1) {
       return "majoroverstaffed_role";
     }
+  } else {
+    if (gradeGap < 0) {
+      return "stretchstaffed_role";      
+    }    
   }
-
+  
   return "misstaffed_role";
 
 }
