@@ -6,10 +6,6 @@
 <div class="container-fluid">
   <h1 class="page-header">Staffing Simulator</h1>
 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#projectScoring">
-  Scoreboard
-</button>
-
   <form name="game" method="post" action="/{{generation}}">
     {% csrf-field %}
     <div class="row">
@@ -183,7 +179,7 @@ $(STAFF_COUNT_CELL).click(function() {
 });
 
 function scoreProject() {
-
+  $('#projectScoring').modal();
 }
 
 function handleTimerExpiry() {

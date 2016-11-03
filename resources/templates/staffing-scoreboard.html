@@ -5,9 +5,11 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Staffing Scoreboard</h4>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
+        <div class="staffing_plans_project">
+          <div class="staffing_plans_project_header">
+            <h3>Opportunity: <em>{{project.type}}</em> Duration: <em>{{project.duration-weeks}} week{{project.duration-weeks|pluralize}}</em></h3>
+          </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
