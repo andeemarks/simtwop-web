@@ -83,6 +83,9 @@
     (assoc :created-on (t/now))
     (assoc :date-stream date-stream) ))
 
+(defn- augment-people [people project]
+  people)
+
 (def timeline (c/generate-date-stream (t/now) (t/plus (t/now) (t/weeks 36))))
 
 (defn jigsaw [generation]
@@ -90,13 +93,15 @@
         complete-project (augment-project raw-project timeline)
         old-projects (doall (db/load-projects))
         saved-project (db/save-project complete-project)
-        people (ps/ps-frequencies (ps/ps-populate 100))
-        people-table (format-people-table people)]
+        raw-people (ps/ps-frequencies (ps/ps-populate 100))
+        complete-people (augment-people raw-people saved-project)
+        people-table (format-people-table complete-people)
+        saved-people (db/save-people complete-people)]
     
   	(layout/render "jigsaw.html" {
       :old-projects old-projects
       :project saved-project
-      :people (db/save-people people)
+      :people saved-people
       :generation generation
       :people-table people-table})))
 
