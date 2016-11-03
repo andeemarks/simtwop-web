@@ -198,10 +198,12 @@ var clock = $('.counter').FlipClock(20, {
 
   setTimeout(function() {
     var interval = setInterval(function() {
+      clock.decrement();
       if(clock.getTime().time <= 0) {
         handleTimerExpiry();
+        clock.stop();
+        clearInterval(interval);
       }     
-      clock.decrement();
     }, 1000);
   });
 </script>
