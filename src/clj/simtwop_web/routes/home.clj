@@ -114,9 +114,7 @@
 
 (defn- update-people [project-id generation people-counts]
   (log/info (str "Updating people from project " project-id ", generation " generation))
-
   (aprint people-counts)
-  ;; Use people-counts in next generation of sim
   (db/save-people people-counts))
 
 (defroutes home-routes
@@ -125,7 +123,7 @@
       (let [next-generation (+ (Integer/parseInt generation) 1)
             project-id      (get (:form-params req) "project-id")
             assignments     (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
-            people-counts    (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
+            people-counts   (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
         (update-people project-id next-generation people-counts)
         (submit-score project-id next-generation assignments))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
