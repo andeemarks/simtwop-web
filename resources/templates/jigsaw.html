@@ -53,6 +53,62 @@ $(document).ready(function(){
 
 var selectedProjectRole = null;
 
+const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
+const PROJECT_ROLE_ROW = ".staffing_plans_project > .project_table > tbody > tr";
+const PROJECT_ROLE_ROW_UNDO = ".staffing_plans_project > .project_table > tbody > tr > td.staffing_plans_undo";
+
+$(PROJECT_ROLE_ROW).click(function() {
+  selectProjectRole(this);
+});
+
+function selectProjectRole(selectedRole) {
+  $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
+  $(selectedRole).addClass("project_role_selected_row");
+  logAction("Selected '" + gradeRoleTupleToString($(selectedRole).attr('id')) + "' role...");
+  selectedProjectRole = $(selectedRole);  
+}
+
+$(PROJECT_ROLE_ROW_UNDO).click(function(event) {
+  unassignStaffFromSelectedRole($(this));
+  event.stopPropagation();
+});
+
+function unassignStaffFromSelectedRole(roleToUnassign) {
+  roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
+    $(this).removeClass("project_role_assigned_row");
+    $(this).find('td.open_role').each (function() {
+      $(this).removeClassRegex(/staffed_role$/);
+    });                    
+    var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
+    logAction("Unassigned " + assignedStaffTitle);
+    //TODO need to put unassigned staff back in pool
+  });
+}
+
+$(STAFF_COUNT_CELL).click(function() {
+  if (selectedProjectRole != null) {
+    assignStaffToSelectedRole(this);
+  }
+});
+
+function assignStaffToSelectedRole(selectedStaff) {
+  var currentCount = $(selectedStaff).text();
+  if (currentCount > 0) {
+    $(selectedStaff).text(currentCount - 1);
+    var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));
+    logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
+    $(selectedProjectRole).addClass("project_role_assigned_row");
+    assignmentAssessment = assessAssignment(selectedProjectRole[0].id, selectedStaff.id);
+    $(selectedProjectRole).find('td.open_role').each (function() {
+      $(this).removeClassRegex(/staffed_role$/);
+      $(this).addClass(assignmentAssessment);
+    });                    
+    $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
+      $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('show');
+    });      
+  }
+}
+
 function logAction(actionText) {
   var actionLog = document.getElementById("action_log");
   var action = document.createElement("li");
@@ -124,62 +180,6 @@ function toggleChevron(e) {
 }
 $('.old_project').on('hidden.bs.collapse', toggleChevron);
 $('.old_project').on('shown.bs.collapse', toggleChevron);
-
-function assignStaffToSelectedRole(selectedStaff) {
-  var currentCount = $(selectedStaff).text();
-  if (currentCount > 0) {
-    $(selectedStaff).text(currentCount - 1);
-    var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));
-    logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
-    $(selectedProjectRole).addClass("project_role_assigned_row");
-    assignmentAssessment = assessAssignment(selectedProjectRole[0].id, selectedStaff.id);
-    $(selectedProjectRole).find('td.open_role').each (function() {
-      $(this).removeClassRegex(/staffed_role$/);
-      $(this).addClass(assignmentAssessment);
-    });                    
-    $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
-      $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('show');
-    });      
-  }
-}
-
-function selectProjectRole(selectedRole) {
-  $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
-  $(selectedRole).addClass("project_role_selected_row");
-  logAction("Selected '" + gradeRoleTupleToString($(selectedRole).attr('id')) + "' role...");
-  selectedProjectRole = $(selectedRole);  
-}
-
-function unassignStaffFromSelectedRole(roleToUnassign) {
-  roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
-    $(this).removeClass("project_role_assigned_row");
-    $(this).find('td.open_role').each (function() {
-      $(this).removeClassRegex(/staffed_role$/);
-    });                    
-    var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
-    logAction("Unassigned " + assignedStaffTitle);
-    //TODO need to put unassigned staff back in pool
-  });
-}
-
-const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
-const PROJECT_ROLE_ROW = ".staffing_plans_project > .project_table > tbody > tr";
-const PROJECT_ROLE_ROW_UNDO = ".staffing_plans_project > .project_table > tbody > tr > td.staffing_plans_undo";
-
-$(PROJECT_ROLE_ROW).click(function() {
-  selectProjectRole(this);
-});
-
-$(PROJECT_ROLE_ROW_UNDO).click(function(event) {
-  unassignStaffFromSelectedRole($(this));
-  event.stopPropagation();
-});
-
-$(STAFF_COUNT_CELL).click(function() {
-  if (selectedProjectRole != null) {
-    assignStaffToSelectedRole(this);
-  }
-});
 
 </script>
 
