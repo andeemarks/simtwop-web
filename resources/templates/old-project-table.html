@@ -1,27 +1,32 @@
         <div class="old_staffing_plans_project">
-          <table class="project_table">
-            <thead>
-              <tr class="old_staffing_plans_header_month"><th/>
-                {% for dates in project.date-stream %}
-                  <th> {{dates.month}} </th>
-                {% endfor %}
-              </tr>
-            </thead>
-            <tbody>
-            {% for role in project.spots %}
-              <tr class="staffing_plans_role">
-                <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
-                  <div><em>{{role.role}}</em><br />{{role.grade}}</div>
-                </td>
-                {% for week in project.lead-time %}
-                  <td class="no_open_role"> </td>
-                {% endfor %}
-                {% for week in project.duration %}
-                  <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
-                {% endfor %}
+          <div class="staffing_plans_project_header">
+            <h3><a href="#old-project-{{project._id}}" data-toggle="collapse"><em>{{project.type}}</em></a></h3>
+          </div>
+          <div id="old-project-{{project._id}}" class="collapse">
+            <table class="project_table">
+              <thead>
+                <tr class="old_staffing_plans_header_month"><th/>
+                  {% for dates in project.date-stream %}
+                    <th> {{dates.month}} </th>
+                  {% endfor %}
+                </tr>
+              </thead>
+              <tbody>
+              {% for role in project.spots %}
+                <tr class="staffing_plans_role">
+                  <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
+                    <div><em>{{role.role}}</em><br />{{role.grade}}</div>
+                  </td>
+                  {% for week in project.lead-time %}
+                    <td class="no_open_role"> </td>
+                  {% endfor %}
+                  {% for week in project.duration %}
+                    <td class="staffing_plans_role_cell open_role_background_{{role.role}}"> </td>
+                  {% endfor %}
 
-              </tr>
-            {% endfor %}
-            </tbody>
-          </table>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>  
         </div>
