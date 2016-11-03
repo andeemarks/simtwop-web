@@ -145,8 +145,14 @@ function selectProjectRole(selectedRole) {
   selectedProjectRole = $(selectedRole);  
 }
 
-function unassignStaffFromSelectedRole(selectedRole) {
-  console.log(selectedRole);
+function unassignStaffFromSelectedRole(roleToUnassign) {
+  console.log(roleToUnassign.parent('tr.project_role_assigned_row'));
+  roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
+    $(this).removeClass("project_role_assigned_row");
+    $(this).find('td.open_role').each (function() {
+      $(this).removeClassRegex(/staffed_role$/);
+    });                    
+  });
 }
 
 const STAFF_COUNT_CELL = ".staffing_table > tbody > tr > td.staffing_plans_role_cell_count";
@@ -158,7 +164,7 @@ $(PROJECT_ROLE_ROW).click(function() {
 });
 
 $(PROJECT_ROLE_ROW_UNDO).click(function() {
-  unassignStaffFromSelectedRole(this);
+  unassignStaffFromSelectedRole($(this));
 });
 
 $(STAFF_COUNT_CELL).click(function() {
