@@ -215,6 +215,10 @@ ul#action_log {
 
 }
 
+.misstaffed_role:before {
+  content: "😱";
+}
+
 .overstaffed_role:before {
   content: "😫";
 }
@@ -223,7 +227,7 @@ ul#action_log {
   content: "😣";
 }
 
-.assigned_role:before {
+.staffed_role:before {
   content: "😃";
 }
 

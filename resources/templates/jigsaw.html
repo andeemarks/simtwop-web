@@ -66,19 +66,37 @@ function assessAssignment(selectedProjectRole, selectedStaff) {
   var selectedStaffTuple = selectedStaff.split("_");
   var selectedProjectRoleTuple = selectedProjectRole.split("_");
 
-  staffGrade = selectedStaffTuple[0];
-  staffRole = selectedStaffTuple[1];
-  projectGrade = selectedProjectRoleTuple[0];
-  projectRole = selectedProjectRoleTuple[1];
+  var grades = ["grad", "con", "senior", "lead", "principal"];
+  var staffGrade = selectedStaffTuple[0];
+  var staffGradeRank = grades.map(function(e) { return e; }).indexOf(staffGrade);
+  var staffRole = selectedStaffTuple[1];
+  var projectGrade = selectedProjectRoleTuple[0];
+  var projectGradeRank = grades.map(function(e) { return e; }).indexOf(projectGrade);
+  var projectRole = selectedProjectRoleTuple[1];
 
   if (staffGrade == projectGrade && staffRole == projectRole) {
-    return "assigned_role";
-  } else {
+    return "staffed_role";
+  } 
+
+  if (staffRole == projectRole && staffGradeRank < projectGradeRank) {
     return "understaffed_role";
   }
-  // console.log(selectedProjectRole);
-  // console.log(selectedStaff)
+
+  if (staffRole == projectRole && staffGradeRank > projectGradeRank) {
+    return "overstaffed_role";
+  }
+
+  return "misstaffed_role";
+
 }
+
+$.fn.removeClassRegex = function(regex) {
+  return $(this).removeClass(function(index, classes) {
+    return classes.split(/\s+/).filter(function(c) {
+      return regex.test(c);
+    }).join(' ');
+  });
+};
 
 function assignStaffToSelectedRole(selectedStaff) {
   var currentCount = $(selectedStaff).text();
@@ -89,6 +107,7 @@ function assignStaffToSelectedRole(selectedStaff) {
     $(selectedProjectRole).addClass("project_role_assigned_row");
     assignmentAssessment = assessAssignment(selectedProjectRole[0].id, selectedStaff.id);
     $(selectedProjectRole).find('td.open_role').each (function() {
+      $(this).removeClassRegex(/staffed_role$/);
       $(this).addClass(assignmentAssessment);
     });                    
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
