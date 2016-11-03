@@ -20,10 +20,6 @@ td.staffing_plans_role_cell_count:hover {
   outline: thin solid green;
 }
 
-tr.old_staffing_plans_header_month {
-  color: white;
-  height: 0px;
-}
 
 .staffing_plans_header_month {
   background-color: #ededed;
@@ -33,11 +29,19 @@ tr.old_staffing_plans_header_month {
   outline: thick solid black;
 }
 
-.staffing_plans_project_header {
+.old_staffing_plans_project .old_staffing_plans_header_month {
+  /*color: white;*/
+  height: 0px;
+}
+
+.old_staffing_plans_project .staffing_plans_project_header {
+  padding-bottom: 0px;
+}
+
+.staffing_plans_project .staffing_plans_project_header {
   margin: 0 4px 2px;
   padding-bottom: 7px;
 }
-
 
 .staffing_plans_role_cell > a, .staffing_plans_role_cell > a:hover {
   color: #ffffff;
@@ -237,6 +241,15 @@ ul#action_log {
 
 .stretchstaffed_role:before {
   content: "🤔";
+}
+
+.staffing_plans_project_header .old_project_chevron:before {
+  font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+  content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+}
+
+.staffing_plans_project_header .old_project_chevron.collapsed:before {
+  content: "\e080";  
 }
 
 @media (min-width: 34em) {
