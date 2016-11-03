@@ -55,7 +55,7 @@ function assignStaffToSelectedRole(selectedStaff) {
       $(this).addClass(assignmentAssessment);
     });                    
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
-      $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('show');
+      $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('hide');
     });      
 
     $('<input>').attr({
