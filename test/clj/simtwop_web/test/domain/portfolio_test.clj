@@ -13,8 +13,8 @@
     (is (not (nil? (:delay-weeks (demand-generate)))))
   	(is (not (nil? (:start-date (demand-generate))))))
 
-  (testing "generates a project with a set of spots"
-    (let [spots (:spots (demand-generate))]
+  (testing "generates a project with a set of spot requests"
+    (let [spots (:requested (:spots (demand-generate)))]
       (is (not (nil? spots)))
       (is (< 0 (count spots)))))
 
