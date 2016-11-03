@@ -60,10 +60,10 @@ function assignStaffToSelectedRole(selectedStaff) {
 
     $('<input>').attr({
       type: 'hidden',
-      id: 'foo',
-      name: 'foo',
-      value: 'bar'
-      }).appendTo('game');
+      id: selectedProjectRole[0].id,
+      name: selectedProjectRole[0].id,
+      value: $(selectedStaff).attr('id')
+      }).appendTo('#game-form');
   }
 }
 
