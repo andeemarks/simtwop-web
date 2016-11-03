@@ -19,9 +19,7 @@ var clock = $('.counter').FlipClock(20, {
     var interval = setInterval(function() {
       clock.decrement();
       if(clock.getTime().time <= 0) {
-        handleTimerExpiry();
-        // clock.stop();
-        // clearInterval(interval);
+        // handleTimerExpiry();
       }     
     }, 1000);
   });

@@ -46,6 +46,13 @@ function assignStaffToSelectedRole(selectedStaff) {
   var currentCount = $(selectedStaff).text();
   if (currentCount > 0) {
     $(selectedStaff).text(currentCount - 1);
+
+    $('<input>').attr({
+      type: 'hidden',
+      name: "count-" + $(selectedStaff).attr('id'),
+      id: "count-" + $(selectedStaff).attr('id'),
+      value: (currentCount - 1)
+      }).appendTo($(selectedStaff));
     var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));
     logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
