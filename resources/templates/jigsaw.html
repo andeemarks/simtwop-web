@@ -25,7 +25,7 @@
       <div class="col-sm-9">
         {% include "project-table.html" %}
         <!-- {{old-projects|count}} -->
-        <h3>Past projects</h3>
+        <h3>Past projects (maximum: 10)</h3>
         {% for project in old-projects %}
           {% include "old-project-table.html" %}
         {% endfor %}
@@ -100,7 +100,7 @@ function assessAssignment(selectedProjectRole, selectedStaff) {
       return "stretchstaffed_role";      
     }    
   }
-  
+
   return "misstaffed_role";
 
 }
@@ -151,11 +151,16 @@ $(STAFF_COUNT_CELL).click(function() {
   }
 });
 
+function scoreProject() {
+
+}
+
 function handleTimerExpiry() {
   clock.reset();
   selectedProjectRole = null;
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
   $(PROJECT_ROLE_ROW).removeClass("project_role_assigned_row");
+  scoreProject();
   // $('.staffing_plans_project').addClass('disabled')
   // document.game.submit();
 }
