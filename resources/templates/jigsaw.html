@@ -44,10 +44,6 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 
-String.prototype.capitalise = function() {
-    return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
-};
-
 var selectedProjectRole = null;
 
 function logAction(actionText) {
@@ -59,7 +55,7 @@ function logAction(actionText) {
 
 function gradeRoleTupleToString(gradeRoleTuple) {
   var tupleBits = gradeRoleTuple.split("_");
-  return (tupleBits[0] + " " + tupleBits[1]).capitalise();
+  return s(tupleBits[0] + " " + tupleBits[1]).titleize().value();
 }
 
 function assessAssignment(selectedProjectRole, selectedStaff) {
@@ -134,7 +130,7 @@ function assignStaffToSelectedRole(selectedStaff) {
 function selectProjectRole(selectedRole) {
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
   $(selectedRole).addClass("project_role_selected_row");
-  logAction("Selected role for '" + gradeRoleTupleToString($(selectedRole).attr('id')) + "'");
+  logAction("Selected '" + gradeRoleTupleToString($(selectedRole).attr('id')) + "' role...");
   selectedProjectRole = $(selectedRole);  
 }
 
