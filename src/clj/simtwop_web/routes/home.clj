@@ -106,9 +106,8 @@
 (defroutes home-routes
   (POST "/:generation"  [generation]  
     (fn [req]
-      (let [_ (aprint (:form-params req))
-            assignments  (filter #(re-matches #"role-." (key %)) (:form-params req))
-            staff-counts (filter #(re-matches #"count-."    (key %)) (:form-params req))]
+      (let [assignments  (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
+            staff-counts (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
       (submit-score (+ (Integer/parseInt generation) 1) assignments))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
   (GET  "/"             []            (jigsaw 1)))
