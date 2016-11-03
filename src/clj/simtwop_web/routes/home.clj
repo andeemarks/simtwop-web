@@ -104,18 +104,22 @@
   (aprint assignments)
   (response/found (str "/" generation)))
 
-(defn- update-staff [staff-counts]
-  ;; Use staff-counts in next generation of sim
+(defn- update-people [project-id generation people-counts]
+  (log/info (str "Updating people from project " project-id ", generation " generation))
+
+  (aprint people-counts)
+  ;; Use people-counts in next generation of sim
   )
 
 (defroutes home-routes
   (POST "/:generation"  [generation]  
     (fn [req]
-      (let [project-id   (get (:form-params req) "project-id")
-            assignments  (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
-            staff-counts (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
-        (update-staff staff-counts)
-        (submit-score project-id (+ (Integer/parseInt generation) 1) assignments))))
+      (let [next-generation (+ (Integer/parseInt generation) 1)
+            project-id      (get (:form-params req) "project-id")
+            assignments     (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
+            people-counts    (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
+        (update-people project-id next-generation people-counts)
+        (submit-score project-id next-generation assignments))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
   (GET  "/"             []            (jigsaw 1)))
 
