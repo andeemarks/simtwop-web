@@ -86,7 +86,7 @@
 
 (defn jigsaw [generation]
   (let [project (p/demand-generate)
-        old-projects (db/load-projects)
+        old-projects (doall (db/load-projects))
         people (ps/ps-frequencies (ps/ps-populate 100))
         people-table (format-people-table people)]
     
