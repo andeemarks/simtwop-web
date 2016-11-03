@@ -57,6 +57,13 @@ function assignStaffToSelectedRole(selectedStaff) {
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
       $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('show');
     });      
+
+    $('<input>').attr({
+      type: 'hidden',
+      id: 'foo',
+      name: 'foo',
+      value: 'bar'
+      }).appendTo('game');
   }
 }
 

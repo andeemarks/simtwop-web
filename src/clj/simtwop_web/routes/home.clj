@@ -20,7 +20,7 @@
 (defn- staffing-count-row-for [role grade count]
   (let [actual-count (or count 0)]
     [:td (attributes-for role grade) actual-count
-      (f/hidden-field (str "count-" role) actual-count)]))
+      (f/hidden-field (str "count-" grade "_" role) actual-count)]))
 
 (defn- format-people-table [people]
   (h/html
@@ -103,7 +103,10 @@
   (response/found (str "/" generation)))
 
 (defroutes home-routes
-  (POST "/:generation"  [generation]  (submit-score (+ (Integer/parseInt generation) 1)))
+  (POST "/:generation"  [generation]  
+    (fn [req]
+      (let [_ (log/info (:form-params req))]
+        (submit-score (+ (Integer/parseInt generation) 1)))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
   (GET  "/"             []            (jigsaw 1)))
 
