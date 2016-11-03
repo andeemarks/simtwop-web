@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% include "staffing-scoreboard.html" %}
+
 <div class="container-fluid">
   <h1 class="page-header">Staffing Simulator</h1>
+
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#projectScoring">
+  Scoreboard
+</button>
 
   <form name="game" method="post" action="/{{generation}}">
     {% csrf-field %}
@@ -146,12 +152,14 @@ function selectProjectRole(selectedRole) {
 }
 
 function unassignStaffFromSelectedRole(roleToUnassign) {
-  console.log(roleToUnassign.parent('tr.project_role_assigned_row'));
   roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
     $(this).removeClass("project_role_assigned_row");
     $(this).find('td.open_role').each (function() {
       $(this).removeClassRegex(/staffed_role$/);
     });                    
+    var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
+    logAction("Unassigned " + assignedStaffTitle);
+    //TODO need to put unassigned staff back in pool
   });
 }
 
@@ -163,8 +171,9 @@ $(PROJECT_ROLE_ROW).click(function() {
   selectProjectRole(this);
 });
 
-$(PROJECT_ROLE_ROW_UNDO).click(function() {
+$(PROJECT_ROLE_ROW_UNDO).click(function(event) {
   unassignStaffFromSelectedRole($(this));
+  event.stopPropagation();
 });
 
 $(STAFF_COUNT_CELL).click(function() {
