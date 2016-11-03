@@ -103,7 +103,7 @@
   (response/found (str "/" generation)))
 
 (defroutes home-routes
-  (POST "/:generation" [generation] (submit-score (+ (Integer/parseInt generation) 1)))
-  (GET "/:generation" [generation] (jigsaw generation))
-  (GET "/" [] (jigsaw 1)))
+  (POST "/:generation"  [generation]  (submit-score (+ (Integer/parseInt generation) 1)))
+  (GET  "/:generation"  [generation]  (jigsaw generation))
+  (GET  "/"             []            (jigsaw 1)))
 
