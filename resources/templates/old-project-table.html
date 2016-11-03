@@ -1,6 +1,6 @@
         <div class="old_staffing_plans_project">
           <div class="staffing_plans_project_header">
-            <h3><a href="#old-project-{{project._id}}" data-toggle="collapse"><em>{{project.type}}</em></a></h3>
+            <h3><a class="old_project_chevron" href="#old-project-{{project._id}}" data-toggle="collapse"><em>{{project.type}}</em> Staffed: {{project.created-on|date:shortTime}} on {{project.created-on|date:shortDate}}</a></h3>
           </div>
           <div id="old-project-{{project._id}}" class="collapse">
             <table class="project_table">
