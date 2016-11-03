@@ -10,6 +10,24 @@
             <h3>Opportunity: <em>{{project.type}}</em> Duration: <em>{{project.duration-weeks}} week{{project.duration-weeks|pluralize}}</em></h3>
           </div>
         </div>
+        <table class="project_table">
+          <tbody>
+          {% for role in project.spots.requested %}
+            <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}_{{forloop.counter}}">
+              <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
+              </td>
+              {% for week in project.lead-time %}
+                <td class="no_open_role"> </td>
+              {% endfor %}
+              {% for week in project.duration %}
+                <td class="staffing_plans_role_cell open_role open_role_background_{{role.role}}"></td>
+              {% endfor %}
+
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
