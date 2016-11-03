@@ -181,6 +181,9 @@ $(STAFF_COUNT_CELL).click(function() {
 
 function scoreProject() {
   $('#projectScoring').modal();
+  $('#projectScoring').on('hidden.bs.modal', function (e) {
+    document.game.submit();
+  })
 }
 
 function handleTimerExpiry() {
@@ -190,7 +193,6 @@ function handleTimerExpiry() {
   // $(PROJECT_ROLE_ROW).removeClass("project_role_assigned_row");
   scoreProject();
   // $('.staffing_plans_project').addClass('disabled')
-  document.game.submit();
 }
 
 var clock = $('.counter').FlipClock(20, {
