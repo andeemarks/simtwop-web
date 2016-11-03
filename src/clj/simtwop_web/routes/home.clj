@@ -1,6 +1,7 @@
 (ns simtwop-web.routes.home
   (:require [clj-time.core :as t])
   (:require [aprint.core :refer :all])
+  (:require [clojure.tools.logging :as log])
   (:require [simtwop-web.layout :as layout]
             [compojure.core :refer [defroutes GET POST]]
             [simtwop-web.domain.core :as c]
@@ -97,7 +98,12 @@
       :generation generation
       :people-table people-table})))
 
+(defn submit-score [generation]
+  (log/info (str "Submitting score for generation " generation))
+  (response/found (str "/" generation)))
+
 (defroutes home-routes
-  (POST "/:generation" [generation] (jigsaw (+ (Integer/parseInt generation) 1)))
+  (POST "/:generation" [generation] (submit-score (+ (Integer/parseInt generation) 1)))
+  (GET "/:generation" [generation] (jigsaw generation))
   (GET "/" [] (jigsaw 1)))
 
