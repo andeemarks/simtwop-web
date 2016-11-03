@@ -4,12 +4,12 @@
           </div>
           <table class="project_table">
             <thead>
-              <tr><th/>
+              <tr><th/><th/>
                 {% for dates in project.date-stream %}
                   <th class="staffing_plans_header_month"> {{dates.month}} </th>
                 {% endfor %}
               </tr>
-              <tr><th/>
+              <tr><th/><th/>
                 {% for dates in project.date-stream %}
                   <th> {{dates.start-of-week}} </th>
                 {% endfor %}
@@ -18,6 +18,7 @@
             <tbody>
             {% for role in project.spots %}
               <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}_{{forloop.counter}}">
+                <td class="staffing_plans_trash_cell"><h3><span class="fa fa-trash" aria-hidden="true"></span></h3></td>
                 <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                   <a href="#" data-toggle="tooltip" title="Unassigned"><div><em>{{role.role}}</em><br />{{role.grade}}</div></a>
                 </td>

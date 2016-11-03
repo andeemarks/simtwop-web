@@ -112,10 +112,10 @@ $.fn.removeClassRegex = function(regex) {
 };
 
 function toggleChevron(e) {
-    $(e.target)
-        .prev('.staffing_plans_project_header')
-        .find('i.indicator')
-        .toggleClass('fa-chevron-circle-right fa-chevron-circle-down');
+  $(e.target)
+    .prev('.staffing_plans_project_header')
+    .find('i.indicator')
+    .toggleClass('fa-chevron-circle-right fa-chevron-circle-down');
 }
 $('.old_project').on('hidden.bs.collapse', toggleChevron);
 $('.old_project').on('shown.bs.collapse', toggleChevron);
