@@ -96,7 +96,7 @@ table.staffing_table {
 }
 
 .available_staff_table {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
   position: relative;
   font-size: 12px;
@@ -109,7 +109,7 @@ table.staffing_table {
 }
 
 .staffing_plans_project {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
   position: relative;
   font-size: 12px;
