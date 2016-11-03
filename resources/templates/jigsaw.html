@@ -187,12 +187,9 @@ function scoreProject() {
 }
 
 function handleTimerExpiry() {
-  clock.reset();
   selectedProjectRole = null;
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
-  // $(PROJECT_ROLE_ROW).removeClass("project_role_assigned_row");
   scoreProject();
-  // $('.staffing_plans_project').addClass('disabled')
 }
 
 var clock = $('.counter').FlipClock(20, {
@@ -204,8 +201,8 @@ var clock = $('.counter').FlipClock(20, {
       clock.decrement();
       if(clock.getTime().time <= 0) {
         handleTimerExpiry();
-        clock.stop();
-        clearInterval(interval);
+        // clock.stop();
+        // clearInterval(interval);
       }     
     }, 1000);
   });
