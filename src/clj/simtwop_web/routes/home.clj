@@ -98,17 +98,19 @@
       :generation generation
       :people-table people-table})))
 
-(defn submit-score [generation assignments]
-  (log/info (str "Submitting score for generation " generation))
-  (log/info assignments)
+(defn submit-score [project-id generation assignments]
+  (log/info (str "Submitting score for project " project-id ", generation " generation))
+
+  (aprint assignments)
   (response/found (str "/" generation)))
 
 (defroutes home-routes
   (POST "/:generation"  [generation]  
     (fn [req]
-      (let [assignments  (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
+      (let [project-id   (get (:form-params req) "project-id")
+            assignments  (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
             staff-counts (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
-      (submit-score (+ (Integer/parseInt generation) 1) assignments))))
+      (submit-score project-id (+ (Integer/parseInt generation) 1) assignments))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
   (GET  "/"             []            (jigsaw 1)))
 

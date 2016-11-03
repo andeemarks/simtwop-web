@@ -8,6 +8,7 @@
 
   <form id="game-form" name="game" method="post" action="/{{generation}}">
     {% csrf-field %}
+    <input type="hidden" name="project-id" value="{{project._id}}">
     <div class="row">
       <div class="col-sm-3">
         <h2>Available staff</h2>
