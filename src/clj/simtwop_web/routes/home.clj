@@ -86,15 +86,17 @@
 (def timeline (c/generate-date-stream (t/now) (t/plus (t/now) (t/weeks 36))))
 
 (defn jigsaw [generation]
-  (let [project (p/demand-generate)
+  (let [raw-project (p/demand-generate)
+        complete-project (augment-project raw-project timeline)
         old-projects (doall (db/load-projects))
+        saved-project (db/save-project complete-project)
         people (ps/ps-frequencies (ps/ps-populate 100))
         people-table (format-people-table people)]
     
   	(layout/render "jigsaw.html" {
       :old-projects old-projects
-      :project (db/save-project (augment-project project timeline))
-      :people people
+      :project saved-project
+      :people (db/save-people people)
       :generation generation
       :people-table people-table})))
 
@@ -109,6 +111,7 @@
 
   (aprint people-counts)
   ;; Use people-counts in next generation of sim
+  ; (db/save-people (augment-project project timeline)
   )
 
 (defroutes home-routes

@@ -20,4 +20,12 @@
 (defn save-project [project]
 	(log/info "Saving project...")
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
-    (mc/insert-and-return db "projects" project)))
+    	(mc/insert-and-return db "projects" project)))
+
+(defn save-people [people]
+	(log/info "Saving people...")
+	(log/info people)
+	(log/info (type people))
+	people)
+	; (let [{:keys [conn db]} (mg/connect-via-uri db-url)]
+ ;    	(mc/insert-and-return db "people" people)))
