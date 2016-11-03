@@ -10,24 +10,27 @@
     {% csrf-field %}
     <div class="row">
       <div class="col-sm-3">
-        <h3>Available staff</h3>
+        <h2>Available staff</h2>
         <div class="available_staff_table">
 
           {% safe %} {{people-table}} {% endsafe %}
 
         </div>
+        <h2>Time remaining</h2>
         <div class="counter"></div>
-        <h3>Staffing Actions</h3>
+        <h2>Staffing Actions</h2>
         <div class="action_log_table">
           <ul id="action_log">
           </ul>
         </div>
       </div>
       <div class="col-sm-9">
+        <h2>Legend</h2>
         {% include "staffing-legend.html" %}
+        <h2>Current project</h2>
         {% include "project-table.html" %}
         <!-- {{old-projects|count}} -->
-        <h3>Past projects (maximum: 10)</h3>
+        <h2>Past projects (maximum: 10)</h2>
         {% for project in old-projects %}
           {% include "old-project-table.html" %}
         {% endfor %}

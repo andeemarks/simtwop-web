@@ -20,6 +20,10 @@ td.staffing_plans_role_cell_count:hover {
   outline: thin solid green;
 }
 
+h2 {
+  border-top: 2px solid black;
+  font-size: 18px;
+}
 
 .staffing_plans_header_month {
   background-color: #ededed;
@@ -42,7 +46,6 @@ td.staffing_plans_role_cell_count:hover {
 .staffing_plans_project .staffing_plans_project_header {
   margin: 0 4px 2px;
   padding-bottom: 7px;
-  border-top: 1px solid black;
   padding-top: 10px;
 }
 
