@@ -11,19 +11,21 @@
           </div>
         </div>
         <table class="project_table">
+            <thead>
+              <tr>
+                <th/>
+                <th>Staffed with</th>
+                <th>Assessment</th>
+              </tr>
+            </thead>
           <tbody>
           {% for role in project.spots.requested %}
             <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}_{{forloop.counter}}">
               <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                 <div><em>{{role.role}}</em><br />{{role.grade}}</div>
               </td>
-              {% for week in project.lead-time %}
-                <td class="no_open_role"> </td>
-              {% endfor %}
-              {% for week in project.duration %}
-                <td class="staffing_plans_role_cell open_role open_role_background_{{role.role}}"></td>
-              {% endfor %}
-
+              <td class="no_open_role"></td>
+              <td class="no_open_role"></td>
             </tr>
           {% endfor %}
           </tbody>
