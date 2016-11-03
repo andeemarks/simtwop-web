@@ -10,10 +10,8 @@
     {% csrf-field %}
     <div class="row">
       <div class="col-sm-3">
+        <h3>Available staff</h3>
         <div class="available_staff_table">
-          <div class="staffing_plans_project_header">
-            <h3>Available staff</h3>
-          </div>
 
           {% safe %} {{people-table}} {% endsafe %}
 
