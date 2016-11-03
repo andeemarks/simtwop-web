@@ -57,10 +57,18 @@ function assignStaffToSelectedRole(selectedStaff) {
     logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");
     assignmentAssessment = assessAssignment(selectedProjectRole[0].id, selectedStaff.id);
+    // Update project table
     $(selectedProjectRole).find('td.open_role').each (function() {
       $(this).removeClassRegex(/staffed_role$/);
       $(this).addClass(assignmentAssessment);
     });                    
+    // Update scoreboard
+    $(".scoreboard").find("tr#" + selectedProjectRole[0].id + ' td.scoreboard_role_assessment').each (function() {
+      $(this).removeClassRegex(/staffed_role$/);
+      $(this).addClass(assignmentAssessment);
+    });                    
+
+    // Add tooltip showing assignment
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
       $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('hide');
     });      

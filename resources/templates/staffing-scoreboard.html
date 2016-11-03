@@ -1,6 +1,6 @@
 <div class="modal fade" id="projectScoring" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content scoreboard">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Staffing Scoreboard</h4>
@@ -15,7 +15,7 @@
               <tr>
                 <th/>
                 <th>Staffed with</th>
-                <th>Assessment</th>
+                <th>Assessement</th>
               </tr>
             </thead>
           <tbody>
@@ -24,8 +24,8 @@
               <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                 <div><em>{{role.role}}</em><br />{{role.grade}}</div>
               </td>
-              <td class="no_open_role"></td>
-              <td class="no_open_role"></td>
+              <td class="no_open_role scoreboard_role_assignment"></td>
+              <td class="no_open_role scoreboard_role_assessment"></td>
             </tr>
           {% endfor %}
           </tbody>
