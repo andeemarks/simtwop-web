@@ -219,8 +219,12 @@ ul#action_log {
   content: "😱";
 }
 
-.overstaffed_role:before {
+.minoroverstaffed_role:before {
   content: "😫";
+}
+
+.majoroverstaffed_role:before {
+  content: "😡";
 }
 
 .understaffed_role:before {
@@ -229,6 +233,10 @@ ul#action_log {
 
 .staffed_role:before {
   content: "😃";
+}
+
+.stretchstaffed_role:before {
+  content: "🤔";
 }
 
 @media (min-width: 34em) {

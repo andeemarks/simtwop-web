@@ -74,16 +74,27 @@ function assessAssignment(selectedProjectRole, selectedStaff) {
   var projectGradeRank = grades.map(function(e) { return e; }).indexOf(projectGrade);
   var projectRole = selectedProjectRoleTuple[1];
 
-  if (staffGrade == projectGrade && staffRole == projectRole) {
-    return "staffed_role";
-  } 
+  if (staffRole == projectRole) {
+    if (staffGrade == projectGrade) {
+      return "staffed_role";
+    } 
 
-  if (staffRole == projectRole && staffGradeRank < projectGradeRank) {
-    return "understaffed_role";
-  }
+    var gradeGap = projectGradeRank - staffGradeRank;
+    if (gradeGap > 1) {
+      return "understaffed_role";
+    }
 
-  if (staffRole == projectRole && staffGradeRank > projectGradeRank) {
-    return "overstaffed_role";
+    if (gradeGap == 1) {
+      return "stretchstaffed_role";
+    }
+
+    if (gradeGap == -1) {
+      return "minoroverstaffed_role";
+    }
+
+    if (gradeGap < -1) {
+      return "majoroverstaffed_role";
+    }
   }
 
   return "misstaffed_role";
