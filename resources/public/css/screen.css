@@ -36,11 +36,14 @@ td.staffing_plans_role_cell_count:hover {
 
 .old_staffing_plans_project .staffing_plans_project_header {
   padding-bottom: 0px;
+  padding-top: 5px;
 }
 
 .staffing_plans_project .staffing_plans_project_header {
   margin: 0 4px 2px;
   padding-bottom: 7px;
+  border-top: 1px solid black;
+  padding-top: 10px;
 }
 
 .staffing_plans_role_cell > a, .staffing_plans_role_cell > a:hover {
