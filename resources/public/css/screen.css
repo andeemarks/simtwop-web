@@ -95,7 +95,7 @@ table.staffing_table {
   pointer-events: none;
 }
 
-.available_staff_table {
+.scoreboard_table, .available_staff_table {
   margin-bottom: 15px;
   padding-bottom: 10px;
   position: relative;
