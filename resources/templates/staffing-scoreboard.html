@@ -3,11 +3,11 @@
     <div class="modal-content scoreboard">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Staffing Scoreboard</h4>
+        <h4 class="modal-title" id="myModalLabel">Scoreboard</h4>
       </div>
         <div class="staffing_plans_project">
           <div class="staffing_plans_project_header">
-            <h3>Opportunity: <em>{{project.type}}</em> Duration: <em>{{project.duration-weeks}} week{{project.duration-weeks|pluralize}}</em></h3>
+            <h3><em>{{project.type}} ({{project.duration-weeks}} week{{project.duration-weeks|pluralize}}</em></h3>
           </div>
         </div>
         <table class="scoreboard_table">
