@@ -34,8 +34,21 @@ function reflectUnassignmentOnScoreboard(selectedProjectRoleId) {
   });                    
 }
 
-function returnUnassignedStaffToBeach() {
+function returnUnassignedStaffToBeach(unassignedStaffId) {
+  var selectedStaffTuple = unassignedStaffId.split("_");
+  var staffGrade = selectedStaffTuple[0];
+  var staffRole = selectedStaffTuple[1];
 
+  var selectedStaff = "#" + staffGrade + "_" + staffRole;
+  var currentCount = parseInt($(selectedStaff).text());
+  $(selectedStaff).text(currentCount + 1);
+
+  $('<input>').attr({
+    type: 'hidden',
+    name: "count-" + $(selectedStaff).attr('id'),
+    id: "count-" + $(selectedStaff).attr('id'),
+    value: (currentCount + 1)
+    }).appendTo($(selectedStaff));
 }
 
 function unassignStaffFromSelectedRole(roleToUnassign) {
@@ -44,12 +57,12 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     $(this).find('td.open_role').each (function() {
       $(this).removeClassRegex(/staffed_role$/);
     });                    
-    var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
+    var unassignedStaffId = $(this).attr('id');
+    var assignedStaffTitle = gradeRoleTupleToString(unassignedStaffId);
 
-    reflectUnassignmentOnScoreboard($(this).attr('id'));
-    returnUnassignedStaffToBeach();
+    reflectUnassignmentOnScoreboard(unassignedStaffId);
+    returnUnassignedStaffToBeach(unassignedStaffId);
     logAction("Unassigned " + assignedStaffTitle);
-    //TODO need to put unassigned staff back in pool
   });
 }
 
