@@ -11,7 +11,7 @@ function handleTimerExpiry() {
   scoreProject();
 }
 
-var clock = $('.counter').FlipClock(10, {
+var clock = $('.counter').FlipClock(20, {
     clockFace: 'Counter'
   });
 
