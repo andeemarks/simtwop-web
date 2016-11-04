@@ -25,10 +25,11 @@ $(PROJECT_ROLE_ROW_UNDO).click(function(event) {
 });
 
 function reflectUnassignmentOnScoreboard(selectedProjectRoleId) {
-  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assessment').each (function() {
+  var scoreboardRow = "tr#" + selectedProjectRoleId;
+  $(".scoreboard").find(scoreboardRow + ' td.scoreboard_role_assessment').each (function() {
     $(this).removeClassRegex(/staffed_role$/);
   });                    
-  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assignment').each (function() {
+  $(".scoreboard").find(scoreboardRow + ' td.scoreboard_role_assignment').each (function() {
     $(this).text("<unassigned>");
   });                    
 }
@@ -54,11 +55,12 @@ $(STAFF_COUNT_CELL).click(function() {
 });
 
 function reflectAssignmentOnScoreboard(selectedProjectRoleId, assignmentAssessment, assignedStaffTitle) {
-  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assessment').each (function() {
+  var scoreboardRow = "tr#" + selectedProjectRoleId;
+  $(".scoreboard").find(scoreboardRow + ' td.scoreboard_role_assessment').each (function() {
     $(this).removeClassRegex(/staffed_role$/);
     $(this).addClass(assignmentAssessment);
   });                    
-  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assignment').each (function() {
+  $(".scoreboard").find(scoreboardRow + ' td.scoreboard_role_assignment').each (function() {
     $(this).text(assignedStaffTitle);
   });                    
 
