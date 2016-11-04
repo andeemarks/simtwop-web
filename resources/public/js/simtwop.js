@@ -34,6 +34,10 @@ function reflectUnassignmentOnScoreboard(selectedProjectRoleId) {
   });                    
 }
 
+function returnUnassignedStaffToBeach() {
+
+}
+
 function unassignStaffFromSelectedRole(roleToUnassign) {
   roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
     $(this).removeClass("project_role_assigned_row");
@@ -43,6 +47,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
 
     reflectUnassignmentOnScoreboard($(this).attr('id'));
+    returnUnassignedStaffToBeach();
     logAction("Unassigned " + assignedStaffTitle);
     //TODO need to put unassigned staff back in pool
   });
