@@ -62,7 +62,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
 
     reflectUnassignmentOnScoreboard(unassignedStaffId);
     returnUnassignedStaffToBeach(unassignedStaffId);
-    logAction("Unassigned " + assignedStaffTitle);
+    logAction("Unassigned '???'' from '" + assignedStaffTitle + "'' role");
   });
 }
 
@@ -117,7 +117,7 @@ function assignStaffToSelectedRole(selectedStaff) {
       id: "role-" + selectedProjectRole[0].id,
       name: "role-" + selectedProjectRole[0].id,
       value: "assigned-" + $(selectedStaff).attr('id')
-      }).appendTo('#game-form');
+      }).appendTo('td.staffing_plans_role_title_cell');
   }
 }
 
