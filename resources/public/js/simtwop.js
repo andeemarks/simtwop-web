@@ -24,6 +24,15 @@ $(PROJECT_ROLE_ROW_UNDO).click(function(event) {
   event.stopPropagation();
 });
 
+function reflectUnassignmentOnScoreboard(selectedProjectRoleId) {
+  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assessment').each (function() {
+    $(this).removeClassRegex(/staffed_role$/);
+  });                    
+  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assignment').each (function() {
+    $(this).text("<unassigned>");
+  });                    
+}
+
 function unassignStaffFromSelectedRole(roleToUnassign) {
   roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
     $(this).removeClass("project_role_assigned_row");
@@ -31,6 +40,8 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
       $(this).removeClassRegex(/staffed_role$/);
     });                    
     var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
+
+    reflectAssignmentOnScoreboard($(this).attr('id'));
     logAction("Unassigned " + assignedStaffTitle);
     //TODO need to put unassigned staff back in pool
   });
