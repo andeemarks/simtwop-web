@@ -67,6 +67,9 @@ function assignStaffToSelectedRole(selectedStaff) {
       $(this).removeClassRegex(/staffed_role$/);
       $(this).addClass(assignmentAssessment);
     });                    
+    $(".scoreboard").find("tr#" + selectedProjectRole[0].id + ' td.scoreboard_role_assignment').each (function() {
+      $(this).text(assignedStaffTitle);
+    });                    
 
     // Add tooltip showing assignment
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
