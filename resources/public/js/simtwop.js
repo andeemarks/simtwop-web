@@ -41,7 +41,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     });                    
     var assignedStaffTitle = gradeRoleTupleToString($(this).attr('id'));
 
-    reflectAssignmentOnScoreboard($(this).attr('id'));
+    reflectUnassignmentOnScoreboard($(this).attr('id'));
     logAction("Unassigned " + assignedStaffTitle);
     //TODO need to put unassigned staff back in pool
   });
