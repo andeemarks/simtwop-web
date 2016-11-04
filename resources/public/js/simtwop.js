@@ -42,6 +42,17 @@ $(STAFF_COUNT_CELL).click(function() {
   }
 });
 
+function reflectAssignmentOnScoreboard(selectedProjectRoleId, assignmentAssessment, assignedStaffTitle) {
+  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assessment').each (function() {
+    $(this).removeClassRegex(/staffed_role$/);
+    $(this).addClass(assignmentAssessment);
+  });                    
+  $(".scoreboard").find("tr#" + selectedProjectRoleId + ' td.scoreboard_role_assignment').each (function() {
+    $(this).text(assignedStaffTitle);
+  });                    
+
+}
+
 function assignStaffToSelectedRole(selectedStaff) {
   var currentCount = $(selectedStaff).text();
   if (currentCount > 0) {
@@ -62,15 +73,9 @@ function assignStaffToSelectedRole(selectedStaff) {
       $(this).removeClassRegex(/staffed_role$/);
       $(this).addClass(assignmentAssessment);
     });                    
-    // Update scoreboard
-    $(".scoreboard").find("tr#" + selectedProjectRole[0].id + ' td.scoreboard_role_assessment').each (function() {
-      $(this).removeClassRegex(/staffed_role$/);
-      $(this).addClass(assignmentAssessment);
-    });                    
-    $(".scoreboard").find("tr#" + selectedProjectRole[0].id + ' td.scoreboard_role_assignment').each (function() {
-      $(this).text(assignedStaffTitle);
-    });                    
 
+    reflectAssignmentOnScoreboard(selectedProjectRole[0].id, assignmentAssessment, assignedStaffTitle);
+    
     // Add tooltip showing assignment
     $(selectedProjectRole).find('td.staffing_plans_role_title_cell a').each (function() {
       $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('hide');
