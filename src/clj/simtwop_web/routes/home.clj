@@ -23,7 +23,6 @@
       (f/hidden-field (str "beach-" grade "_" role) actual-count)]))
 
 (defn- format-beach-table [beach]
-  (aprint beach)
   (h/html
     [:table {:class "staffing_table"}
       [:thead
@@ -115,7 +114,6 @@
 (defn- update-beach [project-id generation beach-counts]
   (log/info (str "Updating beach from project " project-id ", generation " generation))
   (let [complete-beach (augment-beach beach-counts nil)]
-    (aprint complete-beach)
     (db/save-beach complete-beach)))
 
 (defroutes home-routes
