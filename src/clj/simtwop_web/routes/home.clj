@@ -20,9 +20,10 @@
 (defn- staffing-count-row-for [role grade count]
   (let [actual-count (or count 0)]
     [:td (attributes-for role grade) actual-count
-      (f/hidden-field (str "count-" grade "_" role) actual-count)]))
+      (f/hidden-field (str "beach-" grade "_" role) actual-count)]))
 
-(defn- format-people-table [people]
+(defn- format-beach-table [beach]
+  (aprint beach)
   (h/html
     [:table {:class "staffing_table"}
       [:thead
@@ -33,46 +34,46 @@
       [:tbody
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ba"} "ba"]
-          (staffing-count-row-for "ba" "grad"      (people '(:ba :grad)))
-          (staffing-count-row-for "ba" "con"       (people '(:ba :con)))
-          (staffing-count-row-for "ba" "senior"    (people '(:ba :senior)))
-          (staffing-count-row-for "ba" "lead"      (people '(:ba :lead)))
-          (staffing-count-row-for "ba" "principal" (people '(:ba :principal)))]
+          (staffing-count-row-for "ba" "grad"      (beach :beach-grad_ba))
+          (staffing-count-row-for "ba" "con"       (beach :beach-con_ba))
+          (staffing-count-row-for "ba" "senior"    (beach :beach-senior_ba))
+          (staffing-count-row-for "ba" "lead"      (beach :beach-lead_ba))
+          (staffing-count-row-for "ba" "principal" (beach :beach-principal_ba))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_dev"} "dev"]
-          (staffing-count-row-for "dev" "grad"      (people '(:dev :grad)))
-          (staffing-count-row-for "dev" "con"       (people '(:dev :con)))
-          (staffing-count-row-for "dev" "senior"    (people '(:dev :senior)))
-          (staffing-count-row-for "dev" "lead"      (people '(:dev :lead)))
-          (staffing-count-row-for "dev" "principal" (people '(:dev :principal)))]
+          (staffing-count-row-for "dev" "grad"      (beach :beach-grad_dev))
+          (staffing-count-row-for "dev" "con"       (beach :beach-con_dev))
+          (staffing-count-row-for "dev" "senior"    (beach :beach-senior_dev))
+          (staffing-count-row-for "dev" "lead"      (beach :beach-lead_dev))
+          (staffing-count-row-for "dev" "principal" (beach :beach-principal_dev))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_pm"} "pm"]
-          (staffing-count-row-for "pm" "grad"      (people '(:pm :grad)))
-          (staffing-count-row-for "pm" "con"       (people '(:pm :con)))
-          (staffing-count-row-for "pm" "senior"    (people '(:pm :senior)))
-          (staffing-count-row-for "pm" "lead"      (people '(:pm :lead)))
-          (staffing-count-row-for "pm" "principal" (people '(:pm :principal)))]
+          (staffing-count-row-for "pm" "grad"      (beach :beach-grad_pm))
+          (staffing-count-row-for "pm" "con"       (beach :beach-con_pm))
+          (staffing-count-row-for "pm" "senior"    (beach :beach-senior_pm))
+          (staffing-count-row-for "pm" "lead"      (beach :beach-lead_pm))
+          (staffing-count-row-for "pm" "principal" (beach :beach-principal_pm))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_qa"} "qa"]
-          (staffing-count-row-for "qa" "grad"      (people '(:qa :grad)))
-          (staffing-count-row-for "qa" "con"       (people '(:qa :con)))
-          (staffing-count-row-for "qa" "senior"    (people '(:qa :senior)))
-          (staffing-count-row-for "qa" "lead"      (people '(:qa :lead)))
-          (staffing-count-row-for "qa" "principal" (people '(:qa :principal)))]
+          (staffing-count-row-for "qa" "grad"      (beach :beach-grad_qa))
+          (staffing-count-row-for "qa" "con"       (beach :beach-con_qa))
+          (staffing-count-row-for "qa" "senior"    (beach :beach-senior_qa))
+          (staffing-count-row-for "qa" "lead"      (beach :beach-lead_qa))
+          (staffing-count-row-for "qa" "principal" (beach :beach-principal_qa))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_specialist"} "specialist"]
-          (staffing-count-row-for "specialist" "grad"      (people '(:specialist :grad)))
-          (staffing-count-row-for "specialist" "con"       (people '(:specialist :con)))
-          (staffing-count-row-for "specialist" "senior"    (people '(:specialist :senior)))
-          (staffing-count-row-for "specialist" "lead"      (people '(:specialist :lead)))
-          (staffing-count-row-for "specialist" "principal" (people '(:specialist :principal)))]
+          (staffing-count-row-for "specialist" "grad"      (beach :beach-grad_specialist))
+          (staffing-count-row-for "specialist" "con"       (beach :beach-con_specialist))
+          (staffing-count-row-for "specialist" "senior"    (beach :beach-senior_specialist))
+          (staffing-count-row-for "specialist" "lead"      (beach :beach-lead_specialist))
+          (staffing-count-row-for "specialist" "principal" (beach :beach-principal_specialist))]
         [:tr {:class "staffing_plans_role"}
           [:td {:class "staffing_plans_role_cell open_role_background_ux"} "ux"]
-          (staffing-count-row-for "ux" "grad"      (people '(:ux :grad)))
-          (staffing-count-row-for "ux" "con"       (people '(:ux :con)))
-          (staffing-count-row-for "ux" "senior"    (people '(:ux :senior)))
-          (staffing-count-row-for "ux" "lead"      (people '(:ux :lead)))
-          (staffing-count-row-for "ux" "principal" (people '(:ux :principal)))]
+          (staffing-count-row-for "ux" "grad"      (beach :beach-grad_ux))
+          (staffing-count-row-for "ux" "con"       (beach :beach-con_ux))
+          (staffing-count-row-for "ux" "senior"    (beach :beach-senior_ux))
+          (staffing-count-row-for "ux" "lead"      (beach :beach-lead_ux))
+          (staffing-count-row-for "ux" "principal" (beach :beach-principal_ux))]
           ]]))
 
 (defn- augment-project [project date-stream]
@@ -83,28 +84,27 @@
     (assoc :created-on (t/now))
     (assoc :date-stream date-stream) ))
 
-(defn- augment-people [people project]
-  people)
+(defn- augment-beach [beach project]
+  beach)
+  ; (cons beach [:created-on (t/now)]))
 
 (def timeline (c/generate-date-stream (t/now) (t/plus (t/now) (t/weeks 36))))
 
-(defn jigsaw [generation]
-  (let [raw-project (p/demand-generate)
-        complete-project (augment-project raw-project timeline)
-        old-projects (doall (db/load-projects))
-        saved-project (db/save-project complete-project)
-        raw-people (ps/ps-frequencies (ps/ps-populate 100))
-        complete-people (augment-people raw-people saved-project)
-        people-table (format-people-table complete-people)
-        ; saved-people (db/save-people complete-people)
-        ]
-    
-  	(layout/render "jigsaw.html" {
-      :old-projects old-projects
-      :project saved-project
-      :people complete-people
-      :generation generation
-      :people-table people-table})))
+(defn jigsaw 
+  ([generation] (jigsaw generation (first (db/load-last-beach))))
+  ([generation beach]
+    (let [raw-project (p/demand-generate)
+          complete-project (augment-project raw-project timeline)
+          old-projects (doall (db/load-projects))
+          saved-project (db/save-project complete-project)
+          beach-table (format-beach-table beach)
+          ]
+      
+    	(layout/render "jigsaw.html" {
+        :old-projects old-projects
+        :project saved-project
+        :generation generation
+        :beach-table beach-table}))))
 
 (defn submit-score [project-id generation assignments]
   (log/info (str "Submitting score for project " project-id ", generation " generation))
@@ -112,10 +112,11 @@
   (aprint assignments)
   (response/found (str "/" generation)))
 
-(defn- update-people [project-id generation people-counts]
-  (log/info (str "Updating people from project " project-id ", generation " generation))
-  (aprint people-counts)
-  (db/save-people people-counts))
+(defn- update-beach [project-id generation beach-counts]
+  (log/info (str "Updating beach from project " project-id ", generation " generation))
+  (let [complete-beach (augment-beach beach-counts nil)]
+    (aprint complete-beach)
+    (db/save-beach complete-beach)))
 
 (defroutes home-routes
   (POST "/:generation"  [generation]  
@@ -123,9 +124,9 @@
       (let [next-generation (+ (Integer/parseInt generation) 1)
             project-id      (get (:form-params req) "project-id")
             assignments     (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
-            people-counts   (filter #(re-matches #"count\-.*"    (key %)) (:form-params req))]
-        (update-people project-id next-generation people-counts)
+            beach-counts   (filter #(re-matches #"beach\-.*"    (key %)) (:form-params req))]
+        (update-beach project-id next-generation beach-counts)
         (submit-score project-id next-generation assignments))))
   (GET  "/:generation"  [generation]  (jigsaw generation))
-  (GET  "/"             []            (jigsaw 1)))
+  (GET  "/"             []            (jigsaw 1 (ps/initial-population))))
 

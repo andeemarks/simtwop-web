@@ -45,8 +45,8 @@ function returnUnassignedStaffToBeach(unassignedStaffId) {
 
   $('<input>').attr({
     type: 'hidden',
-    name: "count-" + $(selectedStaff).attr('id'),
-    id: "count-" + $(selectedStaff).attr('id'),
+    name: "beach-" + $(selectedStaff).attr('id'),
+    id: "beach-" + $(selectedStaff).attr('id'),
     value: (currentCount + 1)
     }).appendTo($(selectedStaff));
 }
@@ -101,8 +101,8 @@ function assignStaffToSelectedRole(selectedStaff) {
 
     $('<input>').attr({
       type: 'hidden',
-      name: "count-" + $(selectedStaff).attr('id'),
-      id: "count-" + $(selectedStaff).attr('id'),
+      name: "beach-" + $(selectedStaff).attr('id'),
+      id: "beach-" + $(selectedStaff).attr('id'),
       value: (currentCount - 1)
       }).appendTo($(selectedStaff));
     var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));

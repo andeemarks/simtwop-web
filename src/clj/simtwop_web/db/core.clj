@@ -17,13 +17,20 @@
 			(q/limit 10)
 			(q/sort (array-map :created-on -1)))))
 
+(defn load-last-beach []
+	(log/info "Loading last beach structure...")
+	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
+		(q/with-collection db "people"
+			(q/find {})
+			(q/limit 1)
+			(q/sort (array-map :_id -1)))))
+
 (defn save-project [project]
 	(log/info "Saving project...")
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
-    	(mc/insert-and-return db "projects" project)))
+  	(mc/insert-and-return db "projects" project)))
 
-(defn save-people [people]
-	(log/info "Saving people...")
-	(log/info people)
+(defn save-beach [beach]
+	(log/info "Saving beach...")
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
-    	(mc/insert-and-return db "people" people)))
+  	(mc/insert-and-return db "people" beach)))
