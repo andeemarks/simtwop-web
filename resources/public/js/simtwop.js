@@ -57,12 +57,19 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     $(this).find('td.open_role').each (function() {
       $(this).removeClassRegex(/staffed_role$/);
     });                    
-    var unassignedStaffId = $(this).attr('id');
-    var assignedStaffTitle = gradeRoleTupleToString(unassignedStaffId);
+    var projectRoleId = $(this).attr('id');
+    var projectRoleTitle = gradeRoleTupleToString(projectRoleId);
 
-    reflectUnassignmentOnScoreboard(unassignedStaffId);
-    returnUnassignedStaffToBeach(unassignedStaffId);
-    logAction("Unassigned '???'' from '" + assignedStaffTitle + "'' role");
+    // Remove hidden field showing assignment
+    console.log(projectRoleId);
+    var assignedStaffRecord = $('input[type="hidden"][id="role-' + projectRoleId + '"]');
+    var assignedStaffId = assignedStaffRecord.val();
+    var assignedStaffTitle = gradeRoleTupleToString(s(assignedStaffId).strRight("assigned-"));
+    assignedStaffRecord.remove();
+
+    reflectUnassignmentOnScoreboard(projectRoleId);
+    returnUnassignedStaffToBeach(assignedStaffId);
+    logAction("Unassigned '" + assignedStaffTitle + "'' from '" + projectRoleTitle + "'' role");
   });
 }
 
