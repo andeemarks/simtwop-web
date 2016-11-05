@@ -52,16 +52,19 @@ function returnUnassignedStaffToBeach(unassignedStaffId) {
 }
 
 function unassignStaffFromSelectedRole(roleToUnassign) {
+  roleToUnassign.parent('tr.project_role_assigned_row').find('td.staffing_plans_role_title_cell a').each (function() {
+    $(this).attr('data-original-title', "Unassigned").tooltip('hide');
+  });      
+
   roleToUnassign.parent('tr.project_role_assigned_row').each(function() {
     $(this).removeClass("project_role_assigned_row");
     $(this).find('td.open_role').each (function() {
       $(this).removeClassRegex(/staffed_role$/);
-    });                    
+    });
     var projectRoleId = $(this).attr('id');
     var projectRoleTitle = gradeRoleTupleToString(projectRoleId);
 
     // Remove hidden field showing assignment
-    console.log(projectRoleId);
     var assignedStaffRecord = $('input[type="hidden"][id="role-' + projectRoleId + '"]');
     var assignedStaffId = assignedStaffRecord.val();
     var assignedStaffTitle = gradeRoleTupleToString(s(assignedStaffId).strRight("assigned-"));
