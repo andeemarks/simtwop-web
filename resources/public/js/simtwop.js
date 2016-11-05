@@ -15,7 +15,7 @@ $(PROJECT_ROLE_ROW).click(function() {
 function selectProjectRole(selectedRole) {
   $(PROJECT_ROLE_ROW).removeClass("project_role_selected_row");
   $(selectedRole).addClass("project_role_selected_row");
-  logAction("Selected '" + gradeRoleTupleToString($(selectedRole).attr('id')) + "' role...");
+  logAction("Selected " + gradeRoleTupleToString($(selectedRole).attr('id')) + " role...");
   selectedProjectRole = $(selectedRole);  
 }
 
@@ -69,7 +69,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
 
     reflectUnassignmentOnScoreboard(projectRoleId);
     returnUnassignedStaffToBeach(assignedStaffId);
-    logAction("Unassigned '" + assignedStaffTitle + "'' from '" + projectRoleTitle + "'' role");
+    logAction("Unassigned " + assignedStaffTitle + " from " + projectRoleTitle + " role");
   });
 }
 
