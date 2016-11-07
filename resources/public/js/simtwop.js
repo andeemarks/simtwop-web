@@ -65,13 +65,12 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     var projectRoleTitle = gradeRoleTupleToString(projectRoleId);
 
     // Remove hidden field showing assignment
-    var assignedStaffRecord = $('input[type="hidden"][id="role-' + projectRoleId + '"]');
-    var assignedStaffId = assignedStaffRecord.val();
-    var assignedStaffTitle = gradeRoleTupleToString(s(assignedStaffId).strRight("assigned-"));
-    assignedStaffRecord.remove();
+    var assignedStaffId = $("#role-" + projectRoleId).val();
+    $("#role-" + projectRoleId).val("");
 
     reflectUnassignmentOnScoreboard(projectRoleId);
     returnUnassignedStaffToBeach(assignedStaffId);
+    var assignedStaffTitle = gradeRoleTupleToString(s(assignedStaffId).strRight("assigned-"));
     logAction("Unassigned " + assignedStaffTitle + " from " + projectRoleTitle + " role");
   });
 }
@@ -122,12 +121,7 @@ function assignStaffToSelectedRole(selectedStaff) {
       $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('hide');
     });      
 
-    $('<input>').attr({
-      type: 'hidden',
-      id: "role-" + selectedProjectRole[0].id,
-      name: "role-" + selectedProjectRole[0].id,
-      value: "assigned-" + $(selectedStaff).attr('id')
-      }).appendTo('td.staffing_plans_role_title_cell');
+    $("#role-" + selectedProjectRole[0].id).val("assigned-" + $(selectedStaff).attr('id'));
   }
 }
 
