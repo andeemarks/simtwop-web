@@ -40,15 +40,10 @@ function returnUnassignedStaffToBeach(unassignedStaffId) {
   var staffRole = selectedStaffTuple[1];
 
   var selectedStaff = "#" + staffGrade + "_" + staffRole;
-  var currentCount = parseInt($(selectedStaff).text());
-  $(selectedStaff).text(currentCount + 1);
+  var currentCount = parseInt($(selectedStaff).html());
+  $(selectedStaff).html(currentCount + 1);
 
-  $('<input>').attr({
-    type: 'hidden',
-    name: "beach-" + $(selectedStaff).attr('id'),
-    id: "beach-" + $(selectedStaff).attr('id'),
-    value: (currentCount + 1)
-    }).appendTo($(selectedStaff));
+  $("#beach-" + $(selectedStaff).attr('id')).val(currentCount + 1);
 }
 
 function unassignStaffFromSelectedRole(roleToUnassign) {
@@ -69,7 +64,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     $("#role-" + projectRoleId).val("");
 
     reflectUnassignmentOnScoreboard(projectRoleId);
-    returnUnassignedStaffToBeach(assignedStaffId);
+    returnUnassignedStaffToBeach(s(assignedStaffId).strRight("assigned-"));
     var assignedStaffTitle = gradeRoleTupleToString(s(assignedStaffId).strRight("assigned-"));
     logAction("Unassigned " + assignedStaffTitle + " from " + projectRoleTitle + " role");
   });
@@ -94,16 +89,12 @@ function reflectAssignmentOnScoreboard(selectedProjectRoleId, assignmentAssessme
 }
 
 function assignStaffToSelectedRole(selectedStaff) {
-  var currentCount = $(selectedStaff).text();
+  var currentCount = $(selectedStaff).html();
   if (currentCount > 0) {
-    $(selectedStaff).text(currentCount - 1);
+    $(selectedStaff).html(currentCount - 1);
 
-    $('<input>').attr({
-      type: 'hidden',
-      name: "beach-" + $(selectedStaff).attr('id'),
-      id: "beach-" + $(selectedStaff).attr('id'),
-      value: (currentCount - 1)
-      }).appendTo($(selectedStaff));
+    $("#beach-" + $(selectedStaff).attr('id')).val(currentCount - 1);
+
     var assignedStaffTitle = gradeRoleTupleToString($(selectedStaff).attr('id'));
     logAction("Assigned " + assignedStaffTitle + " - " + (currentCount - 1) + " remaining");
     $(selectedProjectRole).addClass("project_role_assigned_row");

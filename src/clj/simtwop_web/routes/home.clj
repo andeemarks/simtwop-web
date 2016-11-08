@@ -19,7 +19,8 @@
 
 (defn- staffing-count-row-for [role grade beach]
   (let [actual-count (or (beach (keyword (str "beach-" grade "_" role))) 0)]
-    [:td (attributes-for role grade) actual-count
+    [:span
+      [:td (attributes-for role grade) actual-count]
       (f/hidden-field (str "beach-" grade "_" role) actual-count)]))
 
 (defn- format-beach-table [beach]
