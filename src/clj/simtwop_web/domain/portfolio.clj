@@ -2,7 +2,9 @@
   (:require [clj-time.core :as t])
   (:gen-class))
 
-(defn- spot [grade role] {:role (name role) :grade (name grade)})
+(defn- spot 
+	([grade role] (spot grade role 1))
+	([grade role index] {:role (name role) :grade (name grade) :id (str (name grade) "_" (name role) "_" index)}))
 
 (def project-start-delay-distribution-weeks [1 2 3 4])
 
@@ -49,7 +51,7 @@
 						(spot :senior :ba) 
 						(spot :grad :dev) 
 						(spot :con :dev) 
-						(spot :con :dev) 
+						(spot :con :dev 2) 
 						(spot :lead :dev) 
 						(spot :senior :dev)]))
 
@@ -61,10 +63,10 @@
 						(spot :lead :ba) 
 						(spot :lead :pm)
 						(spot :grad :dev) 
-						(spot :grad :dev) 
+						(spot :grad :dev 2) 
 						(spot :con :dev) 
-						(spot :con :dev) 
-						(spot :con :dev) 
+						(spot :con :dev 2) 
+						(spot :con :dev 3) 
 						(spot :lead :dev) 
 						(spot :senior :dev)]))
 
@@ -72,8 +74,8 @@
 					"Staff Augmentation" 
 					[16 16 24 24 30 30 36 36]
 					[	(spot :con :dev)
-						(spot :con :dev) 
-						(spot :con :dev) 
+						(spot :con :dev 2) 
+						(spot :con :dev 3) 
 						(spot :senior :dev)]))
 
 (def project-type-distribution [
