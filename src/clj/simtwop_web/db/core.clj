@@ -1,5 +1,6 @@
 (ns simtwop-web.db.core
 	(:import org.bson.types.ObjectId)
+  (:require [aprint.core :refer :all])
   (:require [monger.core :as mg]
   					[monger.query :as q]
   					[simtwop-web.config :refer [env]])
@@ -13,6 +14,11 @@
 (defn load-project [id]
 	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
 		(mc/find-map-by-id db "projects" (ObjectId. id))))
+
+(defn update-project [project]
+	(log/info (str "Updating project with id " (:_id project) "..."))
+	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
+		(mc/update-by-id db "projects" (:_id project) project)))
 
 (defn load-projects []
 	(log/info "Loading all projects...")

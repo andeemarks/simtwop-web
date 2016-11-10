@@ -108,10 +108,11 @@
 
 (defn submit-score [project-id generation assignments]
   (let [unassigned-project (db/load-project project-id)
-        assigned-project (assoc-in unassigned-project [:slots :assigned] assignments)]
+        assigned-project (assoc-in unassigned-project [:spots :assigned] assignments)]
     (log/info (str "Submitting score for project " project-id ", generation " generation))
 
-    (aprint assigned-project)
+    ; (aprint assigned-project)
+    (aprint (db/update-project assigned-project))
     (response/found (str "/" generation))))
 
 (defn- update-beach [project-id generation beach-counts]
