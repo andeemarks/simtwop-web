@@ -20,7 +20,7 @@
             </thead>
           <tbody>
           {% for role in project.spots.requested %}
-            <tr class="staffing_plans_role" id="{{role.grade}}_{{role.role}}_{{forloop.counter}}">
+            <tr class="staffing_plans_role" id="{{role.id}}">
               <td class="staffing_plans_role_cell staffing_plans_role_title_cell open_role_background_{{role.role}}">
                 <div><em>{{role.role}}</em><br />{{role.grade}}</div>
               </td>
