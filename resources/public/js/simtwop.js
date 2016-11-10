@@ -39,6 +39,7 @@ function returnUnassignedStaffToBeach(unassignedStaffId) {
   var staffGrade = selectedStaffTuple[0];
   var staffRole = selectedStaffTuple[1];
 
+  // console.log(unassignedStaffId);
   var selectedStaff = "#" + staffGrade + "_" + staffRole;
   var currentCount = parseInt($(selectedStaff).html());
   $(selectedStaff).html(currentCount + 1);

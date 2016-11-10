@@ -1,4 +1,5 @@
 (ns simtwop-web.db.core
+	(:import org.bson.types.ObjectId)
   (:require [monger.core :as mg]
   					[monger.query :as q]
   					[simtwop-web.config :refer [env]])
@@ -8,6 +9,10 @@
 
 ; (def db-url (env :database-url))
 (def db-url "mongodb://127.0.0.1/simtwop")
+
+(defn load-project [id]
+	(let [{:keys [conn db]} (mg/connect-via-uri db-url)]
+		(mc/find-map-by-id db "projects" (ObjectId. id))))
 
 (defn load-projects []
 	(log/info "Loading all projects...")

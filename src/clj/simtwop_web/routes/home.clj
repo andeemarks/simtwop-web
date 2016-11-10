@@ -107,10 +107,12 @@
         :beach-table beach-table}))))
 
 (defn submit-score [project-id generation assignments]
-  (log/info (str "Submitting score for project " project-id ", generation " generation))
+  (let [unassigned-project (db/load-project project-id)
+        assigned-project (assoc-in unassigned-project [:slots :assigned] assignments)]
+    (log/info (str "Submitting score for project " project-id ", generation " generation))
 
-  (aprint assignments)
-  (response/found (str "/" generation)))
+    (aprint assigned-project)
+    (response/found (str "/" generation))))
 
 (defn- update-beach [project-id generation beach-counts]
   (log/info (str "Updating beach from project " project-id ", generation " generation))
