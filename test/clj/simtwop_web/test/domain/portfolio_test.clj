@@ -7,10 +7,24 @@
       ))
 
 (deftest assignment-updates
-  (testing "assignments can be added to a project"
-    (let [project (demand-generate)
-          assignments {:role-lead_dev_1 "", :role-lead_ux_1 "", :role-principal_pm_1 "", :role-senior_ba_1 ""}]
-      (is (not (nil? (update-assignments project assignments)))))))
+  (testing "a single assignment can be added in a project"
+    (let [project (assoc (dissoc (demand-generate) :spots) :spots '[{:grade "lead", :id "lead_ux_1", :role "ux"}])
+          assignments {:role-lead_ux_1 "lead_ux"}
+          updated-project (update-assignments project assignments)]
+      (is (= "lead_ux" (:assigned (first (:spots updated-project)))))))
+
+  (testing "unfound assignment result in no change to project"
+    (let [project (assoc (dissoc (demand-generate) :spots) :spots '[{:grade "lead", :id "lead_ux_1", :role "ux"}])
+          assignments {:role-lead_ux_2 "lead_dev"}
+          updated-project (update-assignments project assignments)]
+      (is (nil? (:assigned (first (:spots updated-project)))))))
+
+  (testing "multiple assignments can be added to a project"
+    (let [project (assoc (dissoc (demand-generate) :spots) :spots '[{:grade "lead", :id "lead_ux_1", :role "ux"} {:grade "con", :id "con_dev_1", :role "dev"}])
+          assignments {:role-lead_ux_1 "lead_ux", :role-con_dev_1 "senior_dev"}
+          updated-project (update-assignments project assignments)]
+      (is (= "lead_ux" (:assigned (first (:spots updated-project)))))
+      (is (= "senior_dev" (:assigned (second (:spots updated-project))))))))
 
 (deftest demand-generation
   (testing "generates a project with start and end dates, duration and delay"

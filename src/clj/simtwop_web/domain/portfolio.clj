@@ -1,5 +1,6 @@
 (ns simtwop-web.domain.portfolio
-  (:require [clj-time.core :as t])
+  (:require [clj-time.core :as t]
+						[aprint.core :refer :all])
   (:gen-class))
 
 (defn- spot 
@@ -99,5 +100,12 @@
 			end (t/plus start (t/weeks duration))]
 		{:start-date start :duration-weeks duration :end-date end :delay-weeks delay :type (:type project) :spots (:spots project)}))
 
+(defn- identify-assignment [spot assignments]
+	(let [assignment-for-role ((keyword (str "role-" (:id spot))) assignments) ]
+		(merge spot {:assigned assignment-for-role})))
+
 (defn update-assignments [project assignments]
-	project)
+	(let [updated-spots (into [] (map #(identify-assignment % assignments) (:spots project)))
+				updated-project (assoc (dissoc project :spots) :spots updated-spots)]
+		updated-project))
+
