@@ -115,10 +115,10 @@
 
 (defn submit-score [project-id generation assignments]
   (let [unassigned-project (db/load-project project-id)
-        assigned-project (add-assigments-to-project unassigned-project assignments)]
+        assigned-project (p/update-assignments unassigned-project assignments)]
     (log/info (str "Submitting score for project " project-id ", generation " generation))
 
-    ; (aprint assigned-project)
+    (aprint assigned-project)
     (aprint (db/update-project assigned-project))
     (response/found (str "/" generation))))
 
