@@ -2,6 +2,7 @@
   (:require [clj-time.core :as t])
   (:require [aprint.core :refer :all])
   (:require [clojure.tools.logging :as log])
+  (:require [clojure.walk :refer [keywordize-keys]])
   (:require [simtwop-web.layout :as layout]
             [compojure.core :refer [defroutes GET POST]]
             [simtwop-web.domain.core :as c]
@@ -107,6 +108,8 @@
         :beach-table beach-table}))))
 
 (defn- add-assigments-to-project [project assignments]
+  (aprint assignments)
+  (aprint project)
   project)
   ; (assoc-in project [:spots :assigned] assignments))
 
@@ -129,7 +132,7 @@
     (fn [req]
       (let [next-generation (+ (Integer/parseInt generation) 1)
             project-id      (get (:form-params req) "project-id")
-            assignments     (filter #(re-matches #"role\-.*" (key %)) (:form-params req))
+            assignments     (keywordize-keys (into {} (filter #(re-matches #"role\-.*" (key %)) (:form-params req))))
             beach-counts   (filter #(re-matches #"beach\-.*"    (key %)) (:form-params req))]
         (update-beach project-id next-generation beach-counts)
         (submit-score project-id next-generation assignments))))

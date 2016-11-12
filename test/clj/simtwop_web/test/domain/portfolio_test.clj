@@ -6,6 +6,12 @@
     	[simtwop-web.domain.portfolio :refer :all]
       ))
 
+(deftest assignment-updates
+  (testing "assignments can be added to a project"
+    (let [project (demand-generate)
+          assignments {:role-lead_dev_1 "", :role-lead_ux_1 "", :role-principal_pm_1 "", :role-senior_ba_1 ""}]
+      (is (not (nil? (update-assignments project assignments)))))))
+
 (deftest demand-generation
   (testing "generates a project with start and end dates, duration and delay"
 	  (is (not (nil? (:end-date (demand-generate)))))

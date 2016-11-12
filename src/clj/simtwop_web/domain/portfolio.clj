@@ -98,3 +98,6 @@
 			start (t/plus now (t/weeks delay))
 			end (t/plus start (t/weeks duration))]
 		{:start-date start :duration-weeks duration :end-date end :delay-weeks delay :type (:type project) :spots (:spots project)}))
+
+(defn update-assignments [project assignments]
+	project)
