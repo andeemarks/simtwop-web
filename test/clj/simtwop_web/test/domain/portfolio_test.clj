@@ -14,7 +14,7 @@
   	(is (not (nil? (:start-date (demand-generate))))))
 
   (testing "generates a project with a set of spot requests"
-    (let [spots (:requested (:spots (demand-generate)))]
+    (let [spots (:spots (demand-generate))]
       (is (not (nil? spots)))
       (is (< 0 (count spots)))))
 

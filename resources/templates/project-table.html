@@ -16,7 +16,7 @@
               </tr>
             </thead>
             <tbody>
-            {% for role in project.spots.requested %}
+            {% for role in project.spots %}
               <tr class="staffing_plans_role" id="{{role.id}}">
                 <input type="hidden" id="role-{{role.id}}" name="role-{{role.id}}" value="">
                 <td class="staffing_plans_undo open_role_background_{{role.role}}"><h3><span class="fa fa-trash" aria-hidden="true"></span></h3></td>

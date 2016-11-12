@@ -106,9 +106,13 @@
         :generation generation
         :beach-table beach-table}))))
 
+(defn- add-assigments-to-project [project assignments]
+  project)
+  ; (assoc-in project [:spots :assigned] assignments))
+
 (defn submit-score [project-id generation assignments]
   (let [unassigned-project (db/load-project project-id)
-        assigned-project (assoc-in unassigned-project [:spots :assigned] assignments)]
+        assigned-project (add-assigments-to-project unassigned-project assignments)]
     (log/info (str "Submitting score for project " project-id ", generation " generation))
 
     ; (aprint assigned-project)
