@@ -61,7 +61,7 @@ function unassignStaffFromSelectedRole(roleToUnassign) {
     var projectRoleTitle = gradeRoleTupleToString(projectRoleId);
 
     // Remove hidden field showing assignment
-    var assignedStaffId = s($("#role-" + projectRoleId).val()).strRight("assigned-");
+    var assignedStaffId = $("#role-" + projectRoleId).val();
     $("#role-" + projectRoleId).val("");
 
     reflectUnassignmentOnScoreboard(projectRoleId);
@@ -113,7 +113,7 @@ function assignStaffToSelectedRole(selectedStaff) {
       $(this).attr('data-original-title', "Assigned: " + assignedStaffTitle).tooltip('hide');
     });      
 
-    $("#role-" + selectedProjectRole[0].id).val("assigned-" + $(selectedStaff).attr('id'));
+    $("#role-" + selectedProjectRole[0].id).val($(selectedStaff).attr('id'));
   }
 }
 
