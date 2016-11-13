@@ -18,11 +18,20 @@
   {:class (str "staffing_plans_role_cell staffing_plans_role_cell_count open_role_background_" role)
    :id (str grade "_" role)})
 
-(defn- staffing-count-row-for [role grade beach]
+(defn- staffing-count-cell-for [role grade beach]
   (let [actual-count (or (beach (keyword (str "beach-" grade "_" role))) 0)]
     [:span
       [:td (attributes-for role grade) actual-count]
       (f/hidden-field (str "beach-" grade "_" role) actual-count)]))
+
+(defn- staffing-count-row-for [role beach]
+  [:tr {:class "staffing_plans_role"}
+    [:td {:class (str "staffing_plans_role_cell open_role_background_" role)} role]
+    (staffing-count-cell-for role "grad"      beach)
+    (staffing-count-cell-for role "con"       beach)
+    (staffing-count-cell-for role "senior"    beach)
+    (staffing-count-cell-for role "lead"      beach)
+    (staffing-count-cell-for role "principal" beach)])
 
 (defn- format-beach-table [beach]
   (h/html
@@ -33,49 +42,12 @@
           (for [grade '["Grad" "Con" "Senior" "Lead" "Principal"]]
             [:th {:class "staff_table_grade_header"} grade])]]
       [:tbody
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_ba"} "ba"]
-          (staffing-count-row-for "ba" "grad"      beach)
-          (staffing-count-row-for "ba" "con"       beach)
-          (staffing-count-row-for "ba" "senior"    beach)
-          (staffing-count-row-for "ba" "lead"      beach)
-          (staffing-count-row-for "ba" "principal" beach)]
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_dev"} "dev"]
-          (staffing-count-row-for "dev" "grad"      beach)
-          (staffing-count-row-for "dev" "con"       beach)
-          (staffing-count-row-for "dev" "senior"    beach)
-          (staffing-count-row-for "dev" "lead"      beach)
-          (staffing-count-row-for "dev" "principal" beach)]
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_pm"} "pm"]
-          (staffing-count-row-for "pm" "grad"      beach)
-          (staffing-count-row-for "pm" "con"       beach)
-          (staffing-count-row-for "pm" "senior"    beach)
-          (staffing-count-row-for "pm" "lead"      beach)
-          (staffing-count-row-for "pm" "principal" beach)]
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_qa"} "qa"]
-          (staffing-count-row-for "qa" "grad"      beach)
-          (staffing-count-row-for "qa" "con"       beach)
-          (staffing-count-row-for "qa" "senior"    beach)
-          (staffing-count-row-for "qa" "lead"      beach)
-          (staffing-count-row-for "qa" "principal" beach)]
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_specialist"} "specialist"]
-          (staffing-count-row-for "specialist" "grad"      beach)
-          (staffing-count-row-for "specialist" "con"       beach)
-          (staffing-count-row-for "specialist" "senior"    beach)
-          (staffing-count-row-for "specialist" "lead"      beach)
-          (staffing-count-row-for "specialist" "principal" beach)]
-        [:tr {:class "staffing_plans_role"}
-          [:td {:class "staffing_plans_role_cell open_role_background_ux"} "ux"]
-          (staffing-count-row-for "ux" "grad"      beach)
-          (staffing-count-row-for "ux" "con"       beach)
-          (staffing-count-row-for "ux" "senior"    beach)
-          (staffing-count-row-for "ux" "lead"      beach)
-          (staffing-count-row-for "ux" "principal" beach)]
-          ]]))
+        (staffing-count-row-for "ba" beach)
+        (staffing-count-row-for "dev" beach)
+        (staffing-count-row-for "pm" beach)
+        (staffing-count-row-for "qa" beach)
+        (staffing-count-row-for "specialist" beach)
+        (staffing-count-row-for "ux" beach) ]]))
 
 (defn- augment-project [project date-stream]
   (-> 
