@@ -7,6 +7,9 @@
       ))
 
 (deftest margin-calculation
+  (testing "margins are zero with unknown grade"
+    (is (= 0 (margin-calc {:grade :principoo} {:grade :principoo}))))
+  
   (testing "margins decrease with higher grades"
     (is (< (margin-calc {:grade :principal} {:grade :principal})
             (margin-calc {:grade :lead} {:grade :lead})))
