@@ -15,6 +15,7 @@
                  [org.webjars.bower/tether "1.3.7"]
                  [org.webjars/jquery "3.0.0"]
                  [org.clojure/tools.logging "0.3.1"]
+                 [org.clojure/algo.generic "0.1.2"]
                  [compojure "1.5.1"]
                  [ring-webjars "0.1.1"]
                  [ring/ring-defaults "0.2.1"]
