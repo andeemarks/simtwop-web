@@ -15,9 +15,9 @@
     (let [con-margin (margin-calc '[{:grade :con}])
           snr-margin (margin-calc '[{:grade :senior}])]
       (is (approx= 
-        (/ 2 (+ con-margin snr-margin)) 
+        (/ (+ con-margin snr-margin) 2) 
         (margin-calc [{:grade :con} {:grade :senior}])
-        0.1))))
+        0.0001))))
 
   (testing "margins decrease with higher grades"
     (is (< (margin-calc [{:grade :principal}])
