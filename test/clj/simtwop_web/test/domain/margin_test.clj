@@ -9,23 +9,23 @@
 
 (deftest margin-calculation
   (testing "margins are zero with unknown grade"
-    (is (= 0 (margin-calc [{:grade :principoo}]))))
+    (is (= 0 (margin-calc [:principoo]))))
 
   (testing "margins average out across all roles"
-    (let [con-margin (margin-calc '[{:grade :con}])
-          snr-margin (margin-calc '[{:grade :senior}])]
+    (let [con-margin (margin-calc '[:con])
+          snr-margin (margin-calc '[:senior])]
       (is (approx= 
         (/ (+ con-margin snr-margin) 2) 
-        (margin-calc [{:grade :con} {:grade :senior}])
+        (margin-calc [:con :senior])
         0.0001))))
 
   (testing "margins decrease with higher grades"
-    (is (< (margin-calc [{:grade :principal}])
-            (margin-calc [{:grade :lead}])))
-    (is (< (margin-calc [{:grade :lead}])
-            (margin-calc [{:grade :senior}])))
-    (is (< (margin-calc [{:grade :senior}])
-            (margin-calc [{:grade :con}])))
-    (is (< (margin-calc [{:grade :con}])
-            (margin-calc [{:grade :grad}])))
+    (is (< (margin-calc [:principal])
+            (margin-calc [:lead])))
+    (is (< (margin-calc [:lead])
+            (margin-calc [:senior])))
+    (is (< (margin-calc [:senior])
+            (margin-calc [:con])))
+    (is (< (margin-calc [:con])
+            (margin-calc [:grad])))
     ))
